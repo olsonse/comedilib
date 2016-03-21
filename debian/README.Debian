@@ -1,0 +1,7 @@
+Comedilib for Debian
+-------------------
+
+The group iocard has been created to access the comedilib devices. The group
+is assumed to be used for other iocards as well.
+
+ -- Gudjon I. Gudjonsson <gudjon@gudjon.org>, Tue, 04 Mar 2008 00:25:43 +0000

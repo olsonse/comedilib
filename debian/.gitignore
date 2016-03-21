@@ -1,0 +1,16 @@
+changelog
+*.log
+*.substvars
+files
+debhelper-build-stamp
+*.postinst.debhelper
+*.prerm.debhelper
+*.postrm.debhelper
+*.swp
+libcomedi-dev/
+libcomedi0/
+libcomedi0.install
+libcomedi-dev.install
+autoreconf.*
+tmp/
+.debhelper/

@@ -1,0 +1,15 @@
+Document: comedilib
+Title: Debian comedilib Manual
+Author: David Schleef, Frank Mori Hess, Herman Bruyninckx
+Abstract: Comedi is a free software project to interface digital 
+ acquisition (DAQ) cards. It is the combination of three complementary 
+ software items: (i) a generic, device-independent API, 
+ (ii) a collection of Linux kernel modules that implement this 
+ API for a wide range of cards, and (iii) a Linux user space 
+ library with a developer-oriented programming interface 
+ to configure and use the cards. 
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/libcomedi-dev/html/index.html
+Files: /usr/share/doc/libcomedi-dev/html/*.html

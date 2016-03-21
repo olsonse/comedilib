@@ -1,0 +1,45 @@
+Source: comedilib
+Section: devel
+Priority: optional
+Maintainer: Comedi Developers <comedi_list@googlegroups.com>
+Build-Depends: debhelper (>= 9), dpkg-dev (>= 1.16.1~), dh-autoreconf,
+ swig, docbook-utils, dblatex, bison, flex, libtool, xmlto, imagemagick, fop,
+ libboost-program-options-dev, libgsl0-dev, hardening-wrapper
+Standards-Version: 3.9.4
+Homepage: http://www.comedi.org
+
+Package: libcomedi-dev
+Section: libdevel
+Architecture: any
+Depends: libcomedi0 (= ${binary:Version}), ${misc:Depends}
+Description: Development library for Comedi
+ Comedilib is a library for using Comedi, a driver interface for data
+ acquisition hardware.
+ .
+ This package contains headers, static libraries, documentation, and
+ examples for writing software that uses the Comedilib library.  You
+ only need to install it if you plan to develop or compile software
+ that uses Comedilib.
+
+Package: libcomedi0
+Section: libs
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
+Recommends: udev
+Conflicts: libcomedi-0.7.22
+Replaces: libcomedi-0.7.22
+Description: Library for Comedi
+ Comedilib is a library for using Comedi, a driver interface for data
+ acquisition hardware.  Comedi supports a wide variety of ISA and PCI
+ devices that contain analog-to-digital converters, digital-to-analog
+ converters, digital input/output, counters and timers.  The full list
+ of support devices can be found in the libcomedi-dev documentation.
+ .
+ This package contains the shared library component of Comedilib.  In
+ general, this package will be automatically installed as a dependency
+ of application or other library packages.
+ .
+ In order to effectively use this package, you need to have compiled
+ and installed the Comedi kernel modules.  The source for Comedi is
+ available in the comedi-source package, which also contains
+ instructions on how to compile and install the modules.
