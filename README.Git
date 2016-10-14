@@ -16,6 +16,7 @@ Requirements:
 Optional:
 
   swig (for python and ruby bindings)
+  ctypesgen (for ctypes version of python bindings)
   python
   ruby
   xmlto (for building documentation)
