@@ -70,14 +70,14 @@ def main(devfile = '/dev/comedi0'):
       n_ranges = comedi.get_n_ranges(dev,i,0)
       print "\t\tall chans:"
       for j in range(n_ranges):
-        rng = comedi.get_range(dev,i,0,j)
+        rng = comedi.get_range(dev,i,0,j).contents
         print "\t\t[%g,%g]" % (rng.min, rng.max)
     else:
       for chan in range(n_chans):
         n_ranges = comedi.get_n_ranges(dev,i,chan)
         print "\t\tchan: %d" % (chan)
         for j in range(n_ranges):
-          rng = comedi.get_range(dev,i,chan,j)
+          rng = comedi.get_range(dev,i,chan,j).contents
           print "\t\t[%g,%g]" % (rng.min, rng.max)
     print "\tcommand:"
     get_command_stuff(dev,i)
@@ -165,7 +165,8 @@ if __name__ == '__main__':
   import argparse
 
   parser = argparse.ArgumentParser()
-  parser.add_argument('--devfile', type=str, default=None, help='[None]')
+  parser.add_argument('--devfile', type=str, default='/dev/comedi0',
+    help='Select the comedi device file [Default: /dev/comedi0]')
   O = parser.parse_args()
   try:
     main(O.devfile)

@@ -19,7 +19,7 @@ The point of this example was to show a simple method of reading from an analog
 input channel using the mmap data interface.
 """
 
-import comedi
+import comedi, sys, time
 from comedi import CR_PACK, TRIG_EXT
 import numpy as np
 from ctypes import c_uint, c_ubyte, sizeof
@@ -32,26 +32,36 @@ arefs = dict(
   other   = comedi.AREF_OTHER,
 )
 
+command_test_errors = {
+  1: 'unsupported trigger in ..._src setting of comedi command, setting zeroed',
+  2: '..._src setting not supported by driver',
+  3: 'TRIG argument of comedi command outside accepted range',
+  4: 'adjusted TRIG argument in comedi command',
+  5: 'chanlist not supported by board',
+}
+
 def get_subdev_status(dev, subdev):
   flags = comedi.get_subdevice_flags(dev,subdev)
   return comedi.extensions.subdev_flags.to_dict(flags)
 
 
-def main(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
-         aref='ground', clock='timer', frequency=1000., n_samples = 1000,
-         output='output.txt'):
+def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
+         aref='ground', clock='timer', clock_rate=1000., settling_time_ns=10000,
+         n_samples = 1000, output='output.txt'):
   outf = open(output, 'w')
 
   dev = comedi.open(device)
 
   # set up the command
   cmd = comedi.cmd()
+  aref = arefs[ aref ]
   cmd.chanlist = (c_uint * 1)(CR_PACK(channel, rng=0, aref=aref))
   cmd.chanlist_len = 1
   cmd.flags &= ~comedi.CMDF_WRITE
   if subdevice < 0:
-    subdevice = comedi.find_subdevice_by_type(dev, comedi.SUBD_AO, 0)
+    subdevice = comedi.find_subdevice_by_type(dev, comedi.SUBD_AI, 0)
   cmd.subdev = subdevice
+  comedi.set_read_subdevice(dev, cmd.subdev)
 
   if trigger is None:
     cmd.start_src = comedi.TRIG_NOW
@@ -62,13 +72,13 @@ def main(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
 
   if clock == 'timer':
     cmd.scan_begin_src = comedi.TRIG_TIMER
-    cmd.scan_begin_arg = int(1e9 / frequency)
+    cmd.scan_begin_arg = int(1e9 / clock_rate)
   else:
     cmd.scan_begin_src = comedi.TRIG_EXT
     cmd.scan_begin_arg = comedi.CR_EDGE | clock
 
   cmd.convert_src = comedi.TRIG_TIMER
-  cmd.convert_arg = 1
+  cmd.convert_arg = int(settling_time_ns)
 
   cmd.scan_end_src = comedi.TRIG_COUNT
   cmd.scan_end_arg = 1 # == number of channels
@@ -77,13 +87,17 @@ def main(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
   cmd.stop_arg = n_samples
 
   # test the command
+  i = comedi.cmd.from_buffer_copy(cmd)
   err = comedi.command_test(dev, cmd)
   if err < 0:
     raise RuntimeError('comedi.command_test: {}'
                        .format(comedi.strerror(comedi.errno())))
-  elif err:
-    raise RuntimeError('comedi.command_test:  non-zero value {}'.format(err))
-
+  if err in [1, 2, 3, 5]:
+    if repr(i) != repr(cmd):
+      E = 'differences: {}'.format(i.diff(cmd))
+    else:
+      E = 'no differences ???\n{}'.format(cmd)
+    raise RuntimeError(command_test_errors[err] + ':\n\t' + E)
 
   # set up the memory mapping
   # kind of memory we need to map...
@@ -141,7 +155,7 @@ def main(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
 
 
 
-if __name__ == '__main__':
+def process_args(arglist):
   import argparse
 
   parser = argparse.ArgumentParser(description=__doc__)
@@ -160,13 +174,21 @@ if __name__ == '__main__':
          'These can be any item that is reasonable (better know your hardware) '
          'and resolvable using the comedi module namespace.  For example, '
          'NI_PFI(0), TRIGGER_LINE(1), ... are valid for NI devices.')
-  parser.add_argument('--clock', type=str, default='timer', help='[timer]')
+  parser.add_argument('--clock', type=str, default='timer', help='[Default timer]')
   parser.add_argument('--clock_rate', type=float, default=1000., help='[1000.]')
+  parser.add_argument('--settling_time_ns', type=int, default=10000,
+    help='Specify the settling time for each conversion in ns [Default 10000].  '
+         'Note that the minimum time used for allowing the ADC to settle is '
+         'limited by the actual hardware.  In other words, if you select an '
+         'invalid value, a runtime exception will be thrown.')
   parser.add_argument('-N', '--n_samples', type=int, default=1000, help='[1000]')
   parser.add_argument('-o', '--output', default='output.txt',
     help='path to output file')
 
-  O = parser.parse_args()
+  return parser.parse_args(arglist)
+
+def main(arglist):
+  O = process_args(arglist)
 
   try:
     if O.trigger:
@@ -177,4 +199,7 @@ if __name__ == '__main__':
   except NameError as n:
     print 'Name Error: ', n
 
-  main(**O.__dict__)
+  run(**O.__dict__)
+
+if __name__ == '__main__':
+  main(sys.argv[1:])

@@ -18,7 +18,7 @@ This example does 3 instructions in one system call.  It does a
 input, and the another `gettimeofday()` call.
 """
 
-import comedi
+import comedi, sys
 from ctypes import c_uint32
 
 
@@ -55,22 +55,23 @@ def setup_read_insn(dev, subdev, chan, range, aref, n_scan, insn):
   insn.n = n_scan
   insn.data = (c_uint32 * n_scan)()
   insn.subdev = subdev
-  insn.chanspec = comedi.CR_PACK(channel, range, aref)
+  insn.chanspec = comedi.CR_PACK(chan, range, aref)
 
 
-def main(filename, ai_subdev, ai_chan, ai_range, ai_ref, ai_scans):
+def run(args):
   dev = comedi.open(args.filename)
   if not dev:
     raise RuntimeError('error opening Comedi device {}'.format(args.filename))
 
-  if ai_subdev < 0:
-    ai_subdev = comedi.find_subdevice_by_type(dev, comedi.SUBD_AI, 0)
+  if args.ai_subdev < 0:
+    args.ai_subdev = comedi.find_subdevice_by_type(dev, comedi.SUBD_AI, 0)
 
   # prepare the instructions
   insns = comedi.insnlist()
   insns.set_length(3)
   setup_gtod_insn(insns[0])
-  setup_read_insn(dev, ai_subdev, ai_chan, ai_range, ai_ref, ai_scans, insns[1])
+  setup_read_insn(dev, args.ai_subdev, args.ai_chan, args.ai_range, args.ai_ref,
+                  args.ai_scans, insns[1])
   setup_gtod_insn(insns[2])
 
   # execute
@@ -97,7 +98,7 @@ def main(filename, ai_subdev, ai_chan, ai_range, ai_ref, ai_scans):
     print(insns[1].data[i])
 
 
-if __name__ == '__main__':
+def process_args(arglist):
   import argparse
 
   def check_nscans(val):
@@ -111,24 +112,29 @@ if __name__ == '__main__':
     '-f', '--filename', default='/dev/comedi0',
     help='path to comedi device file')
   parser.add_argument(
-    '-s', '--subdevice', type=int, default=-1,
+    '-s', '--subdevice', type=int, default=-1, dest='ai_subdev',
     help='subdevice for analog input [Default=-1].  If <0, find ai subdevice')
   parser.add_argument(
-    '-c', '--channel', type=int, default=0,
+    '-c', '--channel', type=int, default=0, dest='ai_chan',
     help='channel for analog input')
   parser.add_argument(
-    '-a', '--analog-reference', dest='aref', default='ground',
+    '-a', '--analog-reference', default='ground', dest='ai_ref',
     choices=arefs.viewkeys(), help='reference for analog input')
   parser.add_argument(
-    '-r', '--range', type=int, default=0, help='range for analog input')
+    '-r', '--range', type=int, default=0, dest='ai_range',
+    help='range for analog input')
   parser.add_argument(
-    '-N', '--num-scans', type=check_nscans, default=10,
+    '-N', '--num-scans', type=check_nscans, default=10, dest='ai_scans',
     help='number of analog input scans (select 1..1000)')
 
-  args = parser.parse_args()
+  return parser.parse_args(arglist)
 
+def main(arglist):
+  args = process_args(arglist)
   try:
-    main(args.filename, args.subdevice, args.channel, args.range, args.aref,
-         args.num_scans)
+    run(args)
   except RuntimeError, e:
     print('error: {}'.format(e))
+
+if __name__ == '__main__':
+  main(sys.argv[1:])

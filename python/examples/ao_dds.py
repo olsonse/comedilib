@@ -274,13 +274,19 @@ class Test(object):
 
     self.trigger()
 
+  @property
+  def status(self):
+    self.subdevice_flags = \
+      comedi.get_subdevice_flags(self.dev, self.options.subdevice)
+    return comedi.extensions.subdev_flags.to_dict( self.subdevice_flags )
+
   def wait(self):
     """
     wait while the waveform executes
     """
     try:
       if not self.options.write_more:
-        while True:
+        while self.status.running:
           time.sleep(1)
       elif self.options.oswrite:
         # FIXME: this is not quite generic for both enough yet.  Need to call
@@ -452,19 +458,25 @@ dds_list = [
 ]
 
 
-def process_args(argv):
+def process_args(arglist):
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument( '-f', '--filename', nargs='?', default='/dev/comedi0',
-    help='Comedi device file' )
-  parser.add_argument( '-s', '--subdevice', type=int, default=-1 )
-  parser.add_argument( '-c', '--channels', nargs='+', type=int, default=[0] )
-  parser.add_argument( '-a', '--aref',  choices=['ground', 'common'], default='ground' )
-  parser.add_argument( '-r', '--range', type=int, default=0 )
-  parser.add_argument( '-N', '--n_samples', type=int, default=0 )
+    help='Comedi device file [Default: /dev/comedi0]' )
+  parser.add_argument( '-s', '--subdevice', type=int, default=-1,
+    help='Select analog output subdevice [Default:  <first AO>]' )
+  parser.add_argument( '-c', '--channels', nargs='+', type=int, default=[0],
+    help='Select output channels [Default: [0]]' )
+  parser.add_argument( '-a', '--aref',  choices=['ground', 'common'],
+    default='ground',
+    help='Select analog reference [Default: ground]' )
+  parser.add_argument( '-r', '--range', type=int, default=0,
+    help='Select analog output range number [Default 0]' )
+  parser.add_argument( '-N', '--n_samples', type=int, default=0,
+    help='Specify number of output samples per channel [Default 0(all-memory)]' )
   parser.add_argument( '-W', '--waveform_freq', type=float, default=10.0,
-    help='set waveform frequency [default 10.0]' )
+    help='set waveform frequency in Hz [default 10.0]' )
   parser.add_argument( '-F', '--freq', type=float, default=1000.,
-    help='set update frequency [default 1000.]' )
+    help='set update frequency in Hz [default 1000.]' )
   parser.add_argument( '-U', '--update_source',
     default='timer',
     help='Select update signal source [Default: timer].  '
@@ -474,22 +486,24 @@ def process_args(argv):
          'NI_PFI(0), TRIGGER_LINE(1), ... are valid for NI devices.  You can '
          'also specify a raw integer value if desired.')
   parser.add_argument( '-w', '--waveform', type=int, default=0,
-    help='\n\t'.join([ '{}: {}'.format(i,c.name)
+    help='[Default 0]' + '\n\t'.join([ '{}: {}'.format(i,c.name)
            for i,c in zip(xrange(len(dds_list)), dds_list)]) )
-  parser.add_argument( '-C', '--continuous', action='store_true' )
+  parser.add_argument( '-C', '--continuous', action='store_true',
+    help='Select continuous operation')
   parser.add_argument( '-v', '--verbose', action='store_true' )
   parser.add_argument( '--oswrite', action='store_true' )
   parser.add_argument( '--write_more', action='store_true' )
-  parser.add_argument( '-L', '--waveform_len', type=int, default=1<<16 )
+  parser.add_argument( '-L', '--waveform_len', type=int, default=1<<16,
+    help='Select the number of samples in the waveform to repeat' )
   parser.add_argument( '-S', '--show-waveform', action='store_true' )
-  return parser.parse_args(argv)
+  return parser.parse_args(arglist)
 
-def main(argv):
-  t = Test( process_args(argv) )
+def main(arglist):
+  t = Test( process_args(arglist) )
   t.start()
   t.wait()
   t.stop()
   t.close()
 
 if __name__ == '__main__':
-  main(sys.argv)
+  main(sys.argv[1:])

@@ -21,8 +21,15 @@ def comedi_cmd_to_dict(self):
 
   return D
 
+def comedi_cmd_diff(self, other):
+  setI = lambda L : set([(i[0], repr(i[1])) for i in L])
+  old = setI(self.dict().items()) - setI(other.dict().items())
+  new = setI(other.dict().items()) - setI(self.dict().items())
+  return dict(old=dict(old), new=dict(new))
+
 def comedi_cmd_repr(self):
   return repr( self.dict() )
 
 comedi.comedi_cmd.dict = comedi_cmd_to_dict
+comedi.comedi_cmd.diff = comedi_cmd_diff
 comedi.comedi_cmd.__repr__ = comedi_cmd_repr
