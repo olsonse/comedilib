@@ -69,6 +69,8 @@ def main(trigger=None, clock='timer', frequency=1000., continuous=True,
   if err < 0:
     comedi.perror("comedi.command_test")
     raise RuntimeError()
+  elif err:
+    raise RuntimeError('comedi.command_test:  non-zero value {}'.format(err))
 
   # initiate command
   err = comedi.command(dev, cmd)

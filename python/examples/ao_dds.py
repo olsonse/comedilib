@@ -452,7 +452,7 @@ dds_list = [
 ]
 
 
-def process_args():
+def process_args(argv):
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument( '-f', '--filename', nargs='?', default='/dev/comedi0',
     help='Comedi device file' )
@@ -482,14 +482,14 @@ def process_args():
   parser.add_argument( '--write_more', action='store_true' )
   parser.add_argument( '-L', '--waveform_len', type=int, default=1<<16 )
   parser.add_argument( '-S', '--show-waveform', action='store_true' )
-  return parser.parse_args()
+  return parser.parse_args(argv)
 
-def main(args):
-  t = Test( process_args() )
+def main(argv):
+  t = Test( process_args(argv) )
   t.start()
   t.wait()
   t.stop()
   t.close()
 
 if __name__ == '__main__':
-  main( process_args() )
+  main(sys.argv)
