@@ -25,27 +25,6 @@ for t in _int_types:
 del t
 del _int_types
 
-class c_void(Structure):
-    # c_void_p is a buggy return type, converting to int, so
-    # POINTER(None) == c_void_p is actually written as
-    # POINTER(c_void), so it can be treated as a real pointer.
-    _fields_ = [('dummy', c_int)]
-
-def POINTER(obj):
-    p = ctypes.POINTER(obj)
-
-    # Convert None to a real NULL pointer to work around bugs
-    # in how ctypes handles None on 64-bit platforms
-    if not isinstance(p.from_param, classmethod):
-        def from_param(cls, x):
-            if x is None:
-                return cls()
-            else:
-                return x
-        p.from_param = classmethod(from_param)
-
-    return p
-
 class UserString:
     def __init__(self, seq):
         if isinstance(seq, basestring):
@@ -259,6 +238,10 @@ class String(MutableString, Union):
         elif isinstance(obj, int):
             return cls(cast(obj, POINTER(c_char)))
 
+        # Convert from c_char array
+        elif isinstance(obj, c_char*len(obj)):
+            return obj
+
         # Convert from object
         else:
             return String.from_param(obj._as_parameter_)
@@ -284,10 +267,12 @@ def UNCHECKED(type):
 # ctypes doesn't have direct support for variadic functions, so we have to write
 # our own wrapper class
 class _variadic_function(object):
-    def __init__(self,func,restype,argtypes):
+    def __init__(self,func,restype,argtypes,errcheck):
         self.func=func
         self.func.restype=restype
         self.argtypes=argtypes
+        if errcheck:
+          self.func.errcheck = errcheck
     def _as_parameter_(self):
         # So we can pass this variadic function as a function pointer
         return self.func
@@ -1668,11 +1653,7 @@ if hasattr(_libs['comedi'], 'comedi_perror'):
 if hasattr(_libs['comedi'], 'comedi_strerror'):
     comedi_strerror = _libs['comedi'].comedi_strerror
     comedi_strerror.argtypes = [c_int]
-    if sizeof(c_int) == sizeof(c_void_p):
-        comedi_strerror.restype = ReturnString
-    else:
-        comedi_strerror.restype = String
-        comedi_strerror.errcheck = ReturnString
+    comedi_strerror.restype = c_char_p
 
 # /home/olsonse/src/comedi/comedilib/include/comedilib.h: 87
 if hasattr(_libs['comedi'], 'comedi_errno'):
@@ -1708,21 +1689,13 @@ if hasattr(_libs['comedi'], 'comedi_get_version_code'):
 if hasattr(_libs['comedi'], 'comedi_get_driver_name'):
     comedi_get_driver_name = _libs['comedi'].comedi_get_driver_name
     comedi_get_driver_name.argtypes = [POINTER(comedi_t)]
-    if sizeof(c_int) == sizeof(c_void_p):
-        comedi_get_driver_name.restype = ReturnString
-    else:
-        comedi_get_driver_name.restype = String
-        comedi_get_driver_name.errcheck = ReturnString
+    comedi_get_driver_name.restype = c_char_p
 
 # /home/olsonse/src/comedi/comedilib/include/comedilib.h: 98
 if hasattr(_libs['comedi'], 'comedi_get_board_name'):
     comedi_get_board_name = _libs['comedi'].comedi_get_board_name
     comedi_get_board_name.argtypes = [POINTER(comedi_t)]
-    if sizeof(c_int) == sizeof(c_void_p):
-        comedi_get_board_name.restype = ReturnString
-    else:
-        comedi_get_board_name.restype = String
-        comedi_get_board_name.errcheck = ReturnString
+    comedi_get_board_name.restype = c_char_p
 
 # /home/olsonse/src/comedi/comedilib/include/comedilib.h: 99
 if hasattr(_libs['comedi'], 'comedi_get_read_subdevice'):
@@ -2379,7 +2352,7 @@ for _lib in _libs.itervalues():
     comedi_test_route.restype = c_int
     break
 
-# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 370
+# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 375
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'comedi_connect_route'):
         continue
@@ -2388,7 +2361,7 @@ for _lib in _libs.itervalues():
     comedi_connect_route.restype = c_int
     break
 
-# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 382
+# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 387
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'comedi_disconnect_route'):
         continue
@@ -2397,7 +2370,7 @@ for _lib in _libs.itervalues():
     comedi_disconnect_route.restype = c_int
     break
 
-# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 403
+# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 408
 for _lib in _libs.itervalues():
     if not hasattr(_lib, 'comedi_get_routes'):
         continue
