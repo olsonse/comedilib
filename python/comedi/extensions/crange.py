@@ -1,6 +1,6 @@
 # vim: ts=2:sw=2:tw=80:nowrap
 
-from .. import ctypes_comedi as comedi
+from .. import clib
 
 #### comedi_range ####
 def comedi_range_to_dict(self):
@@ -10,14 +10,14 @@ def comedi_range_to_dict(self):
   }
 
   D['unit'] = {
-    comedi.UNIT_mA: 'mA',
-    comedi.UNIT_none: None,
-    comedi.UNIT_volt: 'V',
+    clib.UNIT_mA: 'mA',
+    clib.UNIT_none: None,
+    clib.UNIT_volt: 'V',
   }[ self.unit ]
   return D
 
 def comedi_range_repr(self):
   return repr( self.dict() )
 
-comedi.comedi_range.dict = comedi_range_to_dict
-comedi.comedi_range.__repr__ = comedi_range_repr
+clib.comedi_range.dict = comedi_range_to_dict
+clib.comedi_range.__repr__ = comedi_range_repr

@@ -1,6 +1,6 @@
 # vim: ts=2:sw=2:tw=80:nowrap
 
-from .. import ctypes_comedi as comedi
+from .. import clib
 
 #### comedi_cmd ####
 def comedi_cmd_to_dict(self):
@@ -11,10 +11,10 @@ def comedi_cmd_to_dict(self):
 
   D.update(dict(
     chanlist = tuple(
-      dict( channel = comedi.CR_CHAN(self.chanlist[i]),
-               aref = comedi.CR_AREF(self.chanlist[i]),
-              range = comedi.CR_RANGE(self.chanlist[i]) )
-      for i in xrange( self.chanlist_len )
+      dict( channel = clib.CR_CHAN(self.chanlist[i]),
+               aref = clib.CR_AREF(self.chanlist[i]),
+              range = clib.CR_RANGE(self.chanlist[i]) )
+      for i in range( self.chanlist_len )
     ),
     data = None if not self.data else self.data.contents
   ))
@@ -30,6 +30,6 @@ def comedi_cmd_diff(self, other):
 def comedi_cmd_repr(self):
   return repr( self.dict() )
 
-comedi.comedi_cmd.dict = comedi_cmd_to_dict
-comedi.comedi_cmd.diff = comedi_cmd_diff
-comedi.comedi_cmd.__repr__ = comedi_cmd_repr
+clib.comedi_cmd.dict = comedi_cmd_to_dict
+clib.comedi_cmd.diff = comedi_cmd_diff
+clib.comedi_cmd.__repr__ = comedi_cmd_repr

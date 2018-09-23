@@ -1,6 +1,6 @@
 # vim: ts=2:sw=2:tw=80:nowrap
 
-from .. import ctypes_comedi as comedi
+from .. import clib
 
 #### comedi_route_pair ####
 def comedi_route_pair_to_dict(self):
@@ -13,5 +13,5 @@ def comedi_route_pair_to_dict(self):
 def comedi_route_pair_repr(self):
   return repr( self.dict() )
 
-comedi.comedi_route_pair.dict     = comedi_route_pair_to_dict
-comedi.comedi_route_pair.__repr__ = comedi_route_pair_repr
+clib.comedi_route_pair.dict     = comedi_route_pair_to_dict
+clib.comedi_route_pair.__repr__ = comedi_route_pair_repr

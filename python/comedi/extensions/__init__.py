@@ -5,8 +5,8 @@ When loaded, this package automatically injects some modifications to the comedi
 ctypes library.
 """
 
-import cmd
-import insn
-import crange
-import subdev_flags
-import route_pair
+from . import cmd
+from . import insn
+from . import crange
+from . import subdev_flags
+from . import route_pair
