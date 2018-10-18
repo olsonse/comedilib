@@ -18,7 +18,7 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 # main packaging script based on dh7 syntax
 %:
-	dh $@ --with autoreconf
+	dh $@ --with autoreconf,python3
 
 build binary :  $(CURDIR)/debian/changelog \
 		$(CURDIR)/debian/libcomedi0.install \
@@ -58,7 +58,7 @@ override_dh_auto_configure:
 	dh_auto_configure -- --with-udev-hotplug=/lib \
 			     --with-udev-group=iocard
 
-override_dh_auto_install: install_demo_cfiles
+override_dh_auto_install: install_demo_cfiles install_py_files
 	dh_auto_install
 
 install_demo_cfiles:
@@ -72,7 +72,17 @@ install_demo_cfiles:
 		&& make clean && rm -f board_info* && rm -rf python
 
 override_dh_compress:
-	dh_compress -X.c
+	dh_compress -X.c -X.py
+
+install_py_files:
+	mkdir -p \
+		$(CURDIR)/debian/python3-comedilib/usr/lib/python3/dist-packages
+	mkdir -p \
+		$(CURDIR)/debian/python3-comedilib/usr/share/doc/python3-comedilib
+	cp -R   $(CURDIR)/python/comedi \
+		$(CURDIR)/debian/python3-comedilib/usr/lib/python3/dist-packages/
+	cp -R   $(CURDIR)/python/examples \
+		$(CURDIR)/debian/python3-comedilib/usr/share/doc/python3-comedilib/
 
 $(CURDIR)/debian/libcomedi0.install :
 	@echo "$${LIBCOMEDI0_INSTALL}" > $(CURDIR)/debian/libcomedi0.install

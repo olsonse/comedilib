@@ -14,3 +14,4 @@ libcomedi-dev.install
 autoreconf.*
 tmp/
 .debhelper/
+python3-comedilib/
