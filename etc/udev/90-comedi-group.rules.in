@@ -1,0 +1,2 @@
+# device files restricted to the "@udevgroup@" group
+KERNEL=="comedi[0-9]*", MODE="0660", GROUP="@udevgroup@"

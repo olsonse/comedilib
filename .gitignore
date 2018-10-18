@@ -98,3 +98,4 @@ Makefile.in
 /swig/python/__pycache__
 # more rooted patterns
 /testing/comedi_test
+/etc/udev/90-comedi-group.rules

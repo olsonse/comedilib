@@ -299,6 +299,21 @@ if test "$ENABLE_UDEVHOTPLUG" = "no" ; then
 		AC_MSG_WARN([No hotplug mechanism will be installed. Consult ./configure --help if you want hotplug.])
 fi
 
+AC_ARG_WITH([udev-group],
+	[AS_HELP_STRING([--with-udev-group=[[comedi]]],
+                  [restrict access to comedi devices to usergroup])],
+	[INSTALL_UDEVGROUP=$withval], [INSTALL_UDEVGROUP="no"])
+AM_CONDITIONAL(USE_UDEV_GROUP, [test "$INSTALL_UDEVGROUP" != "no"])
+if test "$INSTALL_UDEVGROUP" != "no"; then
+	if  test "$INSTALL_UDEVGROUP" == "yes"; then
+		AC_MSG_ERROR([udev-hotplug needs a path as an argument (usually: --with-udev-group=comedi).])
+	fi
+	udevgroup="$INSTALL_UDEVGROUP"
+	AC_SUBST(udevgroup)
+else
+	INSTALL_UDEVGROUP="no"
+fi
+
 AC_CONFIG_FILES(
 Makefile
 comedi_config/Makefile
@@ -313,6 +328,7 @@ etc/hotplug/usb/usbdux/Makefile
 etc/hotplug/usb/usbduxfast/Makefile
 etc/hotplug/usb/usbduxsigma/Makefile
 etc/udev/Makefile
+etc/udev/90-comedi-group.rules
 doc/Makefile
 demo/Makefile
 include/Makefile
