@@ -1068,519 +1068,519 @@ I8254_BCD = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 974
 
 I8254_BINARY = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 974
 
-enum_ni_common_signal_names = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+enum_ni_common_signal_names = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-PXI_Star = ((((((((((((((((((((((((((32768 + ((-1) & 63)) + 1) + ((-1) & 7)) + 1) + ((-1) & 3)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1) + ((-1) & 7)) + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+PXI_Star = ((((((((((((((((((((((((((32768 + ((-1) & (64 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (4 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1) + ((-1) & (8 - 1))) + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-PXI_Clk10 = (PXI_Star + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+PXI_Clk10 = (PXI_Star + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-PXIe_Clk100 = (PXI_Clk10 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+PXIe_Clk100 = (PXI_Clk10 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_SampleClock = (PXIe_Clk100 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_SampleClock = (PXIe_Clk100 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_SampleClockTimebase = (NI_AI_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_SampleClockTimebase = (NI_AI_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_StartTrigger = (NI_AI_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_StartTrigger = (NI_AI_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_ReferenceTrigger = (NI_AI_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_ReferenceTrigger = (NI_AI_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_ConvertClock = (NI_AI_ReferenceTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_ConvertClock = (NI_AI_ReferenceTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_ConvertClockTimebase = (NI_AI_ConvertClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_ConvertClockTimebase = (NI_AI_ConvertClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_PauseTrigger = (NI_AI_ConvertClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_PauseTrigger = (NI_AI_ConvertClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_HoldCompleteEvent = (NI_AI_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_HoldCompleteEvent = (NI_AI_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_HoldComplete = (NI_AI_HoldCompleteEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_HoldComplete = (NI_AI_HoldCompleteEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_ExternalMUXClock = (NI_AI_HoldComplete + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_ExternalMUXClock = (NI_AI_HoldComplete + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AI_STOP = (NI_AI_ExternalMUXClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AI_STOP = (NI_AI_ExternalMUXClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AO_SampleClock = (NI_AI_STOP + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AO_SampleClock = (NI_AI_STOP + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AO_SampleClockTimebase = (NI_AO_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AO_SampleClockTimebase = (NI_AO_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AO_StartTrigger = (NI_AO_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AO_StartTrigger = (NI_AO_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AO_PauseTrigger = (NI_AO_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AO_PauseTrigger = (NI_AO_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_SampleClock = (NI_AO_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_SampleClock = (NI_AO_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_SampleClockTimebase = (NI_DI_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_SampleClockTimebase = (NI_DI_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_StartTrigger = (NI_DI_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_StartTrigger = (NI_DI_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_ReferenceTrigger = (NI_DI_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_ReferenceTrigger = (NI_DI_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_PauseTrigger = (NI_DI_ReferenceTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_PauseTrigger = (NI_DI_ReferenceTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_InputBufferFull = (NI_DI_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_InputBufferFull = (NI_DI_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_ReadyForStartEvent = (NI_DI_InputBufferFull + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_ReadyForStartEvent = (NI_DI_InputBufferFull + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_ReadyForTransferEventBurst = (NI_DI_ReadyForStartEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_ReadyForTransferEventBurst = (NI_DI_ReadyForStartEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DI_ReadyForTransferEventPipelined = (NI_DI_ReadyForTransferEventBurst + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DI_ReadyForTransferEventPipelined = (NI_DI_ReadyForTransferEventBurst + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_SampleClock = (NI_DI_ReadyForTransferEventPipelined + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_SampleClock = (NI_DI_ReadyForTransferEventPipelined + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_SampleClockTimebase = (NI_DO_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_SampleClockTimebase = (NI_DO_SampleClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_StartTrigger = (NI_DO_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_StartTrigger = (NI_DO_SampleClockTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_PauseTrigger = (NI_DO_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_PauseTrigger = (NI_DO_StartTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_OutputBufferFull = (NI_DO_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_OutputBufferFull = (NI_DO_PauseTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_DataActiveEvent = (NI_DO_OutputBufferFull + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_DataActiveEvent = (NI_DO_OutputBufferFull + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_ReadyForStartEvent = (NI_DO_DataActiveEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_ReadyForStartEvent = (NI_DO_DataActiveEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_DO_ReadyForTransferEvent = (NI_DO_ReadyForStartEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_DO_ReadyForTransferEvent = (NI_DO_ReadyForStartEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_MasterTimebase = (NI_DO_ReadyForTransferEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_MasterTimebase = (NI_DO_ReadyForTransferEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_20MHzTimebase = (NI_MasterTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_20MHzTimebase = (NI_MasterTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_80MHzTimebase = (NI_20MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_80MHzTimebase = (NI_20MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_100MHzTimebase = (NI_80MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_100MHzTimebase = (NI_80MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_200MHzTimebase = (NI_100MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_200MHzTimebase = (NI_100MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_100kHzTimebase = (NI_200MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_100kHzTimebase = (NI_200MHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_10MHzRefClock = (NI_100kHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_10MHzRefClock = (NI_100kHzTimebase + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_FrequencyOutput = (NI_10MHzRefClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_FrequencyOutput = (NI_10MHzRefClock + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_ChangeDetectionEvent = (NI_FrequencyOutput + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_ChangeDetectionEvent = (NI_FrequencyOutput + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_AnalogComparisonEvent = (NI_ChangeDetectionEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_AnalogComparisonEvent = (NI_ChangeDetectionEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_WatchdogExpiredEvent = (NI_AnalogComparisonEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_WatchdogExpiredEvent = (NI_AnalogComparisonEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_WatchdogExpirationTrigger = (NI_WatchdogExpiredEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_WatchdogExpirationTrigger = (NI_WatchdogExpiredEvent + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_SCXI_Trig1 = (NI_WatchdogExpirationTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_SCXI_Trig1 = (NI_WatchdogExpirationTrigger + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_LogicLow = (NI_SCXI_Trig1 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_LogicLow = (NI_SCXI_Trig1 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_LogicHigh = (NI_LogicLow + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_LogicHigh = (NI_LogicLow + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_ExternalStrobe = (NI_LogicHigh + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_ExternalStrobe = (NI_LogicHigh + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_PFI_DO = (NI_ExternalStrobe + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_PFI_DO = (NI_ExternalStrobe + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_CaseGround = (NI_PFI_DO + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_CaseGround = (NI_PFI_DO + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_RGOUT0 = (NI_CaseGround + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_RGOUT0 = (NI_CaseGround + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-_NI_NAMES_MAX_PLUS_1 = (NI_RGOUT0 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+_NI_NAMES_MAX_PLUS_1 = (NI_RGOUT0 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-NI_NUM_NAMES = (_NI_NAMES_MAX_PLUS_1 - 32768)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+NI_NUM_NAMES = (_NI_NAMES_MAX_PLUS_1 - 32768)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1076
 
-enum_ni_gpct_mode_bits = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+enum_ni_gpct_mode_bits = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_GATE_ON_BOTH_EDGES_BIT = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_GATE_ON_BOTH_EDGES_BIT = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_EDGE_GATE_MODE_MASK = 24# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_EDGE_GATE_MODE_MASK = 24# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_EDGE_GATE_STARTS_STOPS_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_EDGE_GATE_STARTS_STOPS_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_EDGE_GATE_STOPS_STARTS_BITS = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_EDGE_GATE_STOPS_STARTS_BITS = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_EDGE_GATE_STARTS_BITS = 16# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_EDGE_GATE_STARTS_BITS = 16# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_EDGE_GATE_NO_STARTS_NO_STOPS_BITS = 24# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_EDGE_GATE_NO_STARTS_NO_STOPS_BITS = 24# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_STOP_MODE_MASK = 96# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_STOP_MODE_MASK = 96# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_STOP_ON_GATE_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_STOP_ON_GATE_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_STOP_ON_GATE_OR_TC_BITS = 32# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_STOP_ON_GATE_OR_TC_BITS = 32# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_STOP_ON_GATE_OR_SECOND_TC_BITS = 64# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_STOP_ON_GATE_OR_SECOND_TC_BITS = 64# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_LOAD_B_SELECT_BIT = 128# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_LOAD_B_SELECT_BIT = 128# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_OUTPUT_MODE_MASK = 768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_OUTPUT_MODE_MASK = 768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_OUTPUT_TC_PULSE_BITS = 256# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_OUTPUT_TC_PULSE_BITS = 256# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_OUTPUT_TC_TOGGLE_BITS = 512# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_OUTPUT_TC_TOGGLE_BITS = 512# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_OUTPUT_TC_OR_GATE_TOGGLE_BITS = 768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_OUTPUT_TC_OR_GATE_TOGGLE_BITS = 768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_HARDWARE_DISARM_MASK = 3072# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_HARDWARE_DISARM_MASK = 3072# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_NO_HARDWARE_DISARM_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_NO_HARDWARE_DISARM_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_DISARM_AT_TC_BITS = 1024# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_DISARM_AT_TC_BITS = 1024# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_DISARM_AT_GATE_BITS = 2048# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_DISARM_AT_GATE_BITS = 2048# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_DISARM_AT_TC_OR_GATE_BITS = 3072# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_DISARM_AT_TC_OR_GATE_BITS = 3072# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_LOADING_ON_TC_BIT = 4096# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_LOADING_ON_TC_BIT = 4096# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_LOADING_ON_GATE_BIT = 16384# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_LOADING_ON_GATE_BIT = 16384# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_MASK = (7 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_MASK = (7 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_NORMAL_BITS = (0 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_NORMAL_BITS = (0 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_QUADRATURE_X1_BITS = (1 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_QUADRATURE_X1_BITS = (1 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_QUADRATURE_X2_BITS = (2 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_QUADRATURE_X2_BITS = (2 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_QUADRATURE_X4_BITS = (3 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_QUADRATURE_X4_BITS = (3 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_TWO_PULSE_BITS = (4 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_TWO_PULSE_BITS = (4 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_MODE_SYNC_SOURCE_BITS = (6 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_MODE_SYNC_SOURCE_BITS = (6 << 16)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INDEX_PHASE_MASK = (3 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INDEX_PHASE_MASK = (3 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INDEX_PHASE_LOW_A_LOW_B_BITS = (0 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INDEX_PHASE_LOW_A_LOW_B_BITS = (0 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INDEX_PHASE_LOW_A_HIGH_B_BITS = (1 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INDEX_PHASE_LOW_A_HIGH_B_BITS = (1 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INDEX_PHASE_HIGH_A_LOW_B_BITS = (2 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INDEX_PHASE_HIGH_A_LOW_B_BITS = (2 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INDEX_PHASE_HIGH_A_HIGH_B_BITS = (3 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INDEX_PHASE_HIGH_A_HIGH_B_BITS = (3 << 20)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INDEX_ENABLE_BIT = 4194304# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INDEX_ENABLE_BIT = 4194304# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_DIRECTION_MASK = (3 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_DIRECTION_MASK = (3 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_DIRECTION_DOWN_BITS = (0 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_DIRECTION_DOWN_BITS = (0 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_DIRECTION_UP_BITS = (1 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_DIRECTION_UP_BITS = (1 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_DIRECTION_HW_UP_DOWN_BITS = (2 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_DIRECTION_HW_UP_DOWN_BITS = (2 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_COUNTING_DIRECTION_HW_GATE_BITS = (3 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_COUNTING_DIRECTION_HW_GATE_BITS = (3 << 24)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_RELOAD_SOURCE_MASK = 201326592# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_RELOAD_SOURCE_MASK = 201326592# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_RELOAD_SOURCE_FIXED_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_RELOAD_SOURCE_FIXED_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_RELOAD_SOURCE_SWITCHING_BITS = 67108864# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_RELOAD_SOURCE_SWITCHING_BITS = 67108864# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_RELOAD_SOURCE_GATE_SELECT_BITS = 134217728# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_RELOAD_SOURCE_GATE_SELECT_BITS = 134217728# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_OR_GATE_BIT = 268435456# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_OR_GATE_BIT = 268435456# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-NI_GPCT_INVERT_OUTPUT_BIT = 536870912# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
+NI_GPCT_INVERT_OUTPUT_BIT = 536870912# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1151
 
-enum_ni_gpct_clock_source_bits = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+enum_ni_gpct_clock_source_bits = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_CLOCK_SRC_SELECT_MASK = 63# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_CLOCK_SRC_SELECT_MASK = 63# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_TIMEBASE_1_CLOCK_SRC_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_TIMEBASE_1_CLOCK_SRC_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_TIMEBASE_2_CLOCK_SRC_BITS = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_TIMEBASE_2_CLOCK_SRC_BITS = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_TIMEBASE_3_CLOCK_SRC_BITS = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_TIMEBASE_3_CLOCK_SRC_BITS = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_LOGIC_LOW_CLOCK_SRC_BITS = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_LOGIC_LOW_CLOCK_SRC_BITS = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_NEXT_GATE_CLOCK_SRC_BITS = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_NEXT_GATE_CLOCK_SRC_BITS = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_NEXT_TC_CLOCK_SRC_BITS = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_NEXT_TC_CLOCK_SRC_BITS = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_SOURCE_PIN_i_CLOCK_SRC_BITS = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_SOURCE_PIN_i_CLOCK_SRC_BITS = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_PXI10_CLOCK_SRC_BITS = 7# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_PXI10_CLOCK_SRC_BITS = 7# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_PXI_STAR_TRIGGER_CLOCK_SRC_BITS = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_PXI_STAR_TRIGGER_CLOCK_SRC_BITS = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_ANALOG_TRIGGER_OUT_CLOCK_SRC_BITS = 9# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_ANALOG_TRIGGER_OUT_CLOCK_SRC_BITS = 9# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_PRESCALE_MODE_CLOCK_SRC_MASK = 805306368# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_PRESCALE_MODE_CLOCK_SRC_MASK = 805306368# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_NO_PRESCALE_CLOCK_SRC_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_NO_PRESCALE_CLOCK_SRC_BITS = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_PRESCALE_X2_CLOCK_SRC_BITS = 268435456# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_PRESCALE_X2_CLOCK_SRC_BITS = 268435456# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_PRESCALE_X8_CLOCK_SRC_BITS = 536870912# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_PRESCALE_X8_CLOCK_SRC_BITS = 536870912# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-NI_GPCT_INVERT_CLOCK_SRC_BIT = 2147483648# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1216
+NI_GPCT_INVERT_CLOCK_SRC_BIT = 2147483648# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1219
 
-enum_ni_gpct_gate_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+enum_ni_gpct_gate_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_TIMESTAMP_MUX_GATE_SELECT = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_TIMESTAMP_MUX_GATE_SELECT = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_AI_START2_GATE_SELECT = 18# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_AI_START2_GATE_SELECT = 18# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_PXI_STAR_TRIGGER_GATE_SELECT = 19# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_PXI_STAR_TRIGGER_GATE_SELECT = 19# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_NEXT_OUT_GATE_SELECT = 20# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_NEXT_OUT_GATE_SELECT = 20# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_AI_START1_GATE_SELECT = 28# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_AI_START1_GATE_SELECT = 28# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_NEXT_SOURCE_GATE_SELECT = 29# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_NEXT_SOURCE_GATE_SELECT = 29# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_ANALOG_TRIGGER_OUT_GATE_SELECT = 30# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_ANALOG_TRIGGER_OUT_GATE_SELECT = 30# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_LOGIC_LOW_GATE_SELECT = 31# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_LOGIC_LOW_GATE_SELECT = 31# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_SOURCE_PIN_i_GATE_SELECT = 256# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_SOURCE_PIN_i_GATE_SELECT = 256# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_GATE_PIN_i_GATE_SELECT = 257# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_GATE_PIN_i_GATE_SELECT = 257# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_UP_DOWN_PIN_i_GATE_SELECT = 513# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_UP_DOWN_PIN_i_GATE_SELECT = 513# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_SELECTED_GATE_GATE_SELECT = 542# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_SELECTED_GATE_GATE_SELECT = 542# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-NI_GPCT_DISABLED_GATE_SELECT = 32768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1251
+NI_GPCT_DISABLED_GATE_SELECT = 32768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1254
 
-enum_ni_gpct_other_index = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1284
+enum_ni_gpct_other_index = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1287
 
-NI_GPCT_SOURCE_ENCODER_A = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1284
+NI_GPCT_SOURCE_ENCODER_A = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1287
 
-NI_GPCT_SOURCE_ENCODER_B = (NI_GPCT_SOURCE_ENCODER_A + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1284
+NI_GPCT_SOURCE_ENCODER_B = (NI_GPCT_SOURCE_ENCODER_A + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1287
 
-NI_GPCT_SOURCE_ENCODER_Z = (NI_GPCT_SOURCE_ENCODER_B + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1284
+NI_GPCT_SOURCE_ENCODER_Z = (NI_GPCT_SOURCE_ENCODER_B + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1287
 
-enum_ni_gpct_other_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1290
+enum_ni_gpct_other_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1293
 
-NI_GPCT_DISABLED_OTHER_SELECT = 32768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1290
+NI_GPCT_DISABLED_OTHER_SELECT = 32768# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1293
 
-enum_ni_gpct_arm_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1302
+enum_ni_gpct_arm_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1305
 
-NI_GPCT_ARM_IMMEDIATE = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1302
+NI_GPCT_ARM_IMMEDIATE = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1305
 
-NI_GPCT_ARM_PAIRED_IMMEDIATE = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1302
+NI_GPCT_ARM_PAIRED_IMMEDIATE = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1305
 
-NI_GPCT_HW_ARM = 4096# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1302
+NI_GPCT_HW_ARM = 4096# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1305
 
-NI_GPCT_ARM_UNKNOWN = NI_GPCT_HW_ARM# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1302
+NI_GPCT_ARM_UNKNOWN = NI_GPCT_HW_ARM# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1305
 
-enum_ni_gpct_filter_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+enum_ni_gpct_filter_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_OFF = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_OFF = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_TIMEBASE_3_SYNC = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_TIMEBASE_3_SYNC = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_100x_TIMEBASE_1 = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_100x_TIMEBASE_1 = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_20x_TIMEBASE_1 = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_20x_TIMEBASE_1 = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_10x_TIMEBASE_1 = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_10x_TIMEBASE_1 = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_2x_TIMEBASE_1 = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_2x_TIMEBASE_1 = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-NI_GPCT_FILTER_2x_TIMEBASE_3 = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1321
+NI_GPCT_FILTER_2x_TIMEBASE_3 = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1324
 
-enum_ni_pfi_filter_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1335
+enum_ni_pfi_filter_select = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1338
 
-NI_PFI_FILTER_OFF = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1335
+NI_PFI_FILTER_OFF = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1338
 
-NI_PFI_FILTER_125ns = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1335
+NI_PFI_FILTER_125ns = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1338
 
-NI_PFI_FILTER_6425ns = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1335
+NI_PFI_FILTER_6425ns = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1338
 
-NI_PFI_FILTER_2550us = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1335
+NI_PFI_FILTER_2550us = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1338
 
-enum_ni_mio_clock_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1343
+enum_ni_mio_clock_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1346
 
-NI_MIO_INTERNAL_CLOCK = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1343
+NI_MIO_INTERNAL_CLOCK = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1346
 
-NI_MIO_RTSI_CLOCK = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1343
+NI_MIO_RTSI_CLOCK = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1346
 
-NI_MIO_PLL_PXI_STAR_TRIGGER_CLOCK = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1343
+NI_MIO_PLL_PXI_STAR_TRIGGER_CLOCK = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1346
 
-NI_MIO_PLL_PXI10_CLOCK = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1343
+NI_MIO_PLL_PXI10_CLOCK = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1346
 
-NI_MIO_PLL_RTSI0_CLOCK = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1343
+NI_MIO_PLL_RTSI0_CLOCK = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1346
 
-enum_ni_rtsi_routing = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+enum_ni_rtsi_routing = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_ADR_START1 = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_ADR_START1 = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_ADR_START2 = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_ADR_START2 = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_SCLKG = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_SCLKG = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_DACUPDN = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_DACUPDN = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_DA_START1 = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_DA_START1 = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_G_SRC0 = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_G_SRC0 = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_G_GATE0 = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_G_GATE0 = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_RGOUT0 = 7# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_RGOUT0 = 7# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_RTSI_BRD_0 = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_RTSI_BRD_0 = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-NI_RTSI_OUTPUT_RTSI_OSC = 12# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1362
+NI_RTSI_OUTPUT_RTSI_OSC = 12# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1365
 
-enum_ni_pfi_routing = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+enum_ni_pfi_routing = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_PFI_DEFAULT = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_PFI_DEFAULT = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AI_START1 = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AI_START1 = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AI_START2 = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AI_START2 = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AI_CONVERT = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AI_CONVERT = 3# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_G_SRC1 = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_G_SRC1 = 4# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_G_GATE1 = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_G_GATE1 = 5# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AO_UPDATE_N = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AO_UPDATE_N = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AO_START1 = 7# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AO_START1 = 7# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AI_START_PULSE = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AI_START_PULSE = 8# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_G_SRC0 = 9# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_G_SRC0 = 9# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_G_GATE0 = 10# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_G_GATE0 = 10# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_EXT_STROBE = 11# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_EXT_STROBE = 11# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_AI_EXT_MUX_CLK = 12# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_AI_EXT_MUX_CLK = 12# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_GOUT0 = 13# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_GOUT0 = 13# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_GOUT1 = 14# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_GOUT1 = 14# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_FREQ_OUT = 15# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_FREQ_OUT = 15# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_PFI_DO = 16# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_PFI_DO = 16# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_I_ATRIG = 17# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_I_ATRIG = 17# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_RTSI0 = 18# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_RTSI0 = 18# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_PXI_STAR_TRIGGER_IN = 26# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_PXI_STAR_TRIGGER_IN = 26# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_SCXI_TRIG1 = 27# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_SCXI_TRIG1 = 27# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_DIO_CHANGE_DETECT_RTSI = 28# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_DIO_CHANGE_DETECT_RTSI = 28# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_CDI_SAMPLE = 29# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_CDI_SAMPLE = 29# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-NI_PFI_OUTPUT_CDO_UPDATE = 30# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1385
+NI_PFI_OUTPUT_CDO_UPDATE = 30# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1388
 
-enum_ni_660x_pfi_routing = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1422
+enum_ni_660x_pfi_routing = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1425
 
-NI_660X_PFI_OUTPUT_COUNTER = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1422
+NI_660X_PFI_OUTPUT_COUNTER = 1# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1425
 
-NI_660X_PFI_OUTPUT_DIO = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1422
+NI_660X_PFI_OUTPUT_DIO = 2# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1425
 
-enum_ni_m_series_cdio_scan_begin_src = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+enum_ni_m_series_cdio_scan_begin_src = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_GROUND = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_GROUND = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_AI_START = 18# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_AI_START = 18# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_AI_CONVERT = 19# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_AI_CONVERT = 19# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_PXI_STAR_TRIGGER = 20# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_PXI_STAR_TRIGGER = 20# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_G0_OUT = 28# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_G0_OUT = 28# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_G1_OUT = 29# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_G1_OUT = 29# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_ANALOG_TRIGGER = 30# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_ANALOG_TRIGGER = 30# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_AO_UPDATE = 31# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_AO_UPDATE = 31# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_FREQ_OUT = 32# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_FREQ_OUT = 32# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-NI_CDIO_SCAN_BEGIN_SRC_DIO_CHANGE_DETECT_IRQ = 33# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1440
+NI_CDIO_SCAN_BEGIN_SRC_DIO_CHANGE_DETECT_IRQ = 33# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1443
 
-enum_ni_freq_out_clock_source_bits = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1468
+enum_ni_freq_out_clock_source_bits = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1471
 
-NI_FREQ_OUT_TIMEBASE_1_DIV_2_CLOCK_SRC = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1468
+NI_FREQ_OUT_TIMEBASE_1_DIV_2_CLOCK_SRC = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1471
 
-NI_FREQ_OUT_TIMEBASE_2_CLOCK_SRC = (NI_FREQ_OUT_TIMEBASE_1_DIV_2_CLOCK_SRC + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1468
+NI_FREQ_OUT_TIMEBASE_2_CLOCK_SRC = (NI_FREQ_OUT_TIMEBASE_1_DIV_2_CLOCK_SRC + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1471
 
-enum_amplc_dio_clock_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+enum_amplc_dio_clock_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_CLKN = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_CLKN = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_10MHZ = (AMPLC_DIO_CLK_CLKN + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_10MHZ = (AMPLC_DIO_CLK_CLKN + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_1MHZ = (AMPLC_DIO_CLK_10MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_1MHZ = (AMPLC_DIO_CLK_10MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_100KHZ = (AMPLC_DIO_CLK_1MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_100KHZ = (AMPLC_DIO_CLK_1MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_10KHZ = (AMPLC_DIO_CLK_100KHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_10KHZ = (AMPLC_DIO_CLK_100KHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_1KHZ = (AMPLC_DIO_CLK_10KHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_1KHZ = (AMPLC_DIO_CLK_10KHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_OUTNM1 = (AMPLC_DIO_CLK_1KHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_OUTNM1 = (AMPLC_DIO_CLK_1KHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_EXT = (AMPLC_DIO_CLK_OUTNM1 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_EXT = (AMPLC_DIO_CLK_OUTNM1 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_VCC = (AMPLC_DIO_CLK_EXT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_VCC = (AMPLC_DIO_CLK_EXT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_GND = (AMPLC_DIO_CLK_VCC + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_GND = (AMPLC_DIO_CLK_VCC + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_PAT_PRESENT = (AMPLC_DIO_CLK_GND + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_PAT_PRESENT = (AMPLC_DIO_CLK_GND + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-AMPLC_DIO_CLK_20MHZ = (AMPLC_DIO_CLK_PAT_PRESENT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1477
+AMPLC_DIO_CLK_20MHZ = (AMPLC_DIO_CLK_PAT_PRESENT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1480
 
-enum_amplc_dio_ts_clock_src = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1512
+enum_amplc_dio_ts_clock_src = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1515
 
-AMPLC_DIO_TS_CLK_1GHZ = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1512
+AMPLC_DIO_TS_CLK_1GHZ = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1515
 
-AMPLC_DIO_TS_CLK_1MHZ = (AMPLC_DIO_TS_CLK_1GHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1512
+AMPLC_DIO_TS_CLK_1MHZ = (AMPLC_DIO_TS_CLK_1GHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1515
 
-AMPLC_DIO_TS_CLK_1KHZ = (AMPLC_DIO_TS_CLK_1MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1512
+AMPLC_DIO_TS_CLK_1KHZ = (AMPLC_DIO_TS_CLK_1MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1515
 
-enum_amplc_dio_gate_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+enum_amplc_dio_gate_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_VCC = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_VCC = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_GND = (AMPLC_DIO_GAT_VCC + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_GND = (AMPLC_DIO_GAT_VCC + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_GATN = (AMPLC_DIO_GAT_GND + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_GATN = (AMPLC_DIO_GAT_GND + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_NOUTNM2 = (AMPLC_DIO_GAT_GATN + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_NOUTNM2 = (AMPLC_DIO_GAT_GATN + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_RESERVED4 = (AMPLC_DIO_GAT_NOUTNM2 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_RESERVED4 = (AMPLC_DIO_GAT_NOUTNM2 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_RESERVED5 = (AMPLC_DIO_GAT_RESERVED4 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_RESERVED5 = (AMPLC_DIO_GAT_RESERVED4 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_RESERVED6 = (AMPLC_DIO_GAT_RESERVED5 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_RESERVED6 = (AMPLC_DIO_GAT_RESERVED5 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_RESERVED7 = (AMPLC_DIO_GAT_RESERVED6 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_RESERVED7 = (AMPLC_DIO_GAT_RESERVED6 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_NGATN = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_NGATN = 6# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_OUTNM2 = (AMPLC_DIO_GAT_NGATN + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_OUTNM2 = (AMPLC_DIO_GAT_NGATN + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_PAT_PRESENT = (AMPLC_DIO_GAT_OUTNM2 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_PAT_PRESENT = (AMPLC_DIO_GAT_OUTNM2 + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_PAT_OCCURRED = (AMPLC_DIO_GAT_PAT_PRESENT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_PAT_OCCURRED = (AMPLC_DIO_GAT_PAT_PRESENT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_PAT_GONE = (AMPLC_DIO_GAT_PAT_OCCURRED + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_PAT_GONE = (AMPLC_DIO_GAT_PAT_OCCURRED + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_NPAT_PRESENT = (AMPLC_DIO_GAT_PAT_GONE + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_NPAT_PRESENT = (AMPLC_DIO_GAT_PAT_GONE + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_NPAT_OCCURRED = (AMPLC_DIO_GAT_NPAT_PRESENT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_NPAT_OCCURRED = (AMPLC_DIO_GAT_NPAT_PRESENT + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-AMPLC_DIO_GAT_NPAT_GONE = (AMPLC_DIO_GAT_NPAT_OCCURRED + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1522
+AMPLC_DIO_GAT_NPAT_GONE = (AMPLC_DIO_GAT_NPAT_OCCURRED + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1525
 
-enum_ke_counter_clock_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1554
+enum_ke_counter_clock_source = c_int# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1557
 
-KE_CLK_20MHZ = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1554
+KE_CLK_20MHZ = 0# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1557
 
-KE_CLK_4MHZ = (KE_CLK_20MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1554
+KE_CLK_4MHZ = (KE_CLK_20MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1557
 
-KE_CLK_EXT = (KE_CLK_4MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1554
+KE_CLK_EXT = (KE_CLK_4MHZ + 1)# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1557
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1582
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1585
 class struct_comedi_trig_struct(Structure):
     pass
 
@@ -1613,7 +1613,7 @@ struct_comedi_trig_struct._fields_ = [
     ('unused', c_uint * int(3)),
 ]
 
-comedi_trig = struct_comedi_trig_struct# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1597
+comedi_trig = struct_comedi_trig_struct# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1600
 
 # /home/olsonse/src/comedi/comedilib/include/comedilib.h: 50
 class struct_comedi_t_struct(Structure):
@@ -3191,231 +3191,235 @@ try:
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1046
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1044
+def _TERM_N(base, n, x):
+    return (base + (x & (n - 1)))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1049
 def NI_PFI(x):
-    return (NI_NAMES_BASE + (x & 63))
+    return (_TERM_N (NI_NAMES_BASE, 64, x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1048
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1051
 def TRIGGER_LINE(x):
-    return (((NI_PFI ((-1))) + 1) + (x & 7))
-
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1050
-def NI_RTSI_BRD(x):
-    return (((TRIGGER_LINE ((-1))) + 1) + (x & 3))
+    return (_TERM_N (((NI_PFI ((-1))) + 1), 8, x))
 
 # /home/olsonse/src/comedi/comedilib/include/comedi.h: 1053
+def NI_RTSI_BRD(x):
+    return (_TERM_N (((TRIGGER_LINE ((-1))) + 1), 4, x))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1056
+try:
+    NI_MAX_COUNTERS = 8
+except:
+    pass
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1057
 try:
     NI_COUNTER_NAMES_BASE = ((NI_RTSI_BRD ((-1))) + 1)
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1054
-try:
-    NI_MAX_COUNTERS = 7
-except:
-    pass
-
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1055
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1058
 def NI_CtrSource(x):
-    return (NI_COUNTER_NAMES_BASE + (x & NI_MAX_COUNTERS))
+    return (_TERM_N (NI_COUNTER_NAMES_BASE, NI_MAX_COUNTERS, x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1057
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1060
 try:
     NI_GATES_NAMES_BASE = ((NI_CtrSource ((-1))) + 1)
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1058
-def NI_CtrGate(x):
-    return (NI_GATES_NAMES_BASE + (x & NI_MAX_COUNTERS))
-
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1059
-def NI_CtrAux(x):
-    return (((NI_CtrGate ((-1))) + 1) + (x & NI_MAX_COUNTERS))
-
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1060
-def NI_CtrA(x):
-    return (((NI_CtrAux ((-1))) + 1) + (x & NI_MAX_COUNTERS))
-
 # /home/olsonse/src/comedi/comedilib/include/comedi.h: 1061
-def NI_CtrB(x):
-    return (((NI_CtrA ((-1))) + 1) + (x & NI_MAX_COUNTERS))
+def NI_CtrGate(x):
+    return (_TERM_N (NI_GATES_NAMES_BASE, NI_MAX_COUNTERS, x))
 
 # /home/olsonse/src/comedi/comedilib/include/comedi.h: 1062
-def NI_CtrZ(x):
-    return (((NI_CtrB ((-1))) + 1) + (x & NI_MAX_COUNTERS))
+def NI_CtrAux(x):
+    return (_TERM_N (((NI_CtrGate ((-1))) + 1), NI_MAX_COUNTERS, x))
 
 # /home/olsonse/src/comedi/comedilib/include/comedi.h: 1063
+def NI_CtrA(x):
+    return (_TERM_N (((NI_CtrAux ((-1))) + 1), NI_MAX_COUNTERS, x))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1064
+def NI_CtrB(x):
+    return (_TERM_N (((NI_CtrA ((-1))) + 1), NI_MAX_COUNTERS, x))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1065
+def NI_CtrZ(x):
+    return (_TERM_N (((NI_CtrB ((-1))) + 1), NI_MAX_COUNTERS, x))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1066
 try:
     NI_GATES_NAMES_MAX = (NI_CtrZ ((-1)))
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1064
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1067
 def NI_CtrArmStartTrigger(x):
-    return (((NI_CtrZ ((-1))) + 1) + (x & NI_MAX_COUNTERS))
-
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1065
-def NI_CtrInternalOutput(x):
-    return (((NI_CtrArmStartTrigger ((-1))) + 1) + (x & NI_MAX_COUNTERS))
+    return (_TERM_N (((NI_CtrZ ((-1))) + 1), NI_MAX_COUNTERS, x))
 
 # /home/olsonse/src/comedi/comedilib/include/comedi.h: 1068
-def NI_CtrOut(x):
-    return (((NI_CtrInternalOutput ((-1))) + 1) + (x & NI_MAX_COUNTERS))
-
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1070
-def NI_CtrSampleClock(x):
-    return (((NI_CtrOut ((-1))) + 1) + (x & NI_MAX_COUNTERS))
+def NI_CtrInternalOutput(x):
+    return (_TERM_N (((NI_CtrArmStartTrigger ((-1))) + 1), NI_MAX_COUNTERS, x))
 
 # /home/olsonse/src/comedi/comedilib/include/comedi.h: 1071
+def NI_CtrOut(x):
+    return (_TERM_N (((NI_CtrInternalOutput ((-1))) + 1), NI_MAX_COUNTERS, x))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1073
+def NI_CtrSampleClock(x):
+    return (_TERM_N (((NI_CtrOut ((-1))) + 1), NI_MAX_COUNTERS, x))
+
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1074
 try:
     NI_COUNTER_NAMES_MAX = (NI_CtrSampleClock ((-1)))
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1138
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1141
 def NI_USUAL_PFI_SELECT(x):
     return (x < 10) and (1 + x) or (11 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1139
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1142
 def NI_USUAL_RTSI_SELECT(x):
     return (x < 7) and (11 + x) or 27
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1145
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1148
 try:
     NI_GPCT_COUNTING_MODE_SHIFT = 16
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1146
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1149
 try:
     NI_GPCT_INDEX_PHASE_BITSHIFT = 20
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1147
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1150
 try:
     NI_GPCT_COUNTING_DIRECTION_SHIFT = 24
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1239
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1242
 def NI_GPCT_SOURCE_PIN_CLOCK_SRC_BITS(x):
     return (16 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1241
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1244
 def NI_GPCT_RTSI_CLOCK_SRC_BITS(x):
     return (24 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1244
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1247
 def NI_GPCT_PFI_CLOCK_SRC_BITS(x):
     return (32 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1275
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1278
 def NI_GPCT_GATE_PIN_GATE_SELECT(x):
     return (258 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1276
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1279
 def NI_GPCT_RTSI_GATE_SELECT(x):
     return (NI_USUAL_RTSI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1277
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1280
 def NI_GPCT_PFI_GATE_SELECT(x):
     return (NI_USUAL_PFI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1278
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1281
 def NI_GPCT_UP_DOWN_PIN_GATE_SELECT(x):
     return (514 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1296
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1299
 def NI_GPCT_PFI_OTHER_SELECT(x):
     return (NI_USUAL_PFI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1355
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1358
 def NI_MIO_PLL_RTSI_CLOCK(x):
     return (NI_MIO_PLL_RTSI0_CLOCK + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1376
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1379
 def NI_RTSI_OUTPUT_RTSI_BRD(x):
     return (NI_RTSI_OUTPUT_RTSI_BRD_0 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1412
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1415
 def NI_PFI_OUTPUT_RTSI(x):
     return (NI_PFI_OUTPUT_RTSI0 + x)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1432
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1435
 def NI_EXT_PFI(x):
     return ((NI_USUAL_PFI_SELECT (x)) - 1)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1433
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1436
 def NI_EXT_RTSI(x):
     return ((NI_USUAL_RTSI_SELECT (x)) - 1)
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1453
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1456
 def NI_CDIO_SCAN_BEGIN_SRC_PFI(x):
     return (NI_USUAL_PFI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1454
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1457
 def NI_CDIO_SCAN_BEGIN_SRC_RTSI(x):
     return (NI_USUAL_RTSI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1461
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1464
 def NI_AO_SCAN_BEGIN_SRC_PFI(x):
     return (NI_USUAL_PFI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1462
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1465
 def NI_AO_SCAN_BEGIN_SRC_RTSI(x):
     return (NI_USUAL_RTSI_SELECT (x))
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1568
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1571
 try:
     SDF_MODE0 = 128
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1569
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1572
 try:
     SDF_MODE1 = 256
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1570
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1573
 try:
     SDF_MODE2 = 512
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1571
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1574
 try:
     SDF_MODE3 = 1024
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1572
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1575
 try:
     SDF_MODE4 = 2048
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1573
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1576
 try:
     SDF_RT = 524288
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1578
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1581
 try:
     TRIG_DITHER = 2
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1579
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1582
 try:
     TRIG_DEGLITCH = 4
 except:
     pass
 
-# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1580
+# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1583
 try:
     TRIG_CONFIG = 16
 except:
@@ -3527,7 +3531,7 @@ comedi_bufconfig_struct = struct_comedi_bufconfig_struct# /home/olsonse/src/come
 
 comedi_bufinfo_struct = struct_comedi_bufinfo_struct# /home/olsonse/src/comedi/comedilib/include/comedi.h: 922
 
-comedi_trig_struct = struct_comedi_trig_struct# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1582
+comedi_trig_struct = struct_comedi_trig_struct# /home/olsonse/src/comedi/comedilib/include/comedi.h: 1585
 
 comedi_t_struct = struct_comedi_t_struct# /home/olsonse/src/comedi/comedilib/include/comedilib.h: 50
 
