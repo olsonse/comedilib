@@ -29,3 +29,4 @@ for k,v in globals().copy().items():
 del re, k, v
 
 from . import extensions
+from . import names
