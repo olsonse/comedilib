@@ -79,10 +79,15 @@ install_py_files:
 		$(CURDIR)/debian/python3-comedilib/usr/lib/python3/dist-packages
 	mkdir -p \
 		$(CURDIR)/debian/python3-comedilib/usr/share/doc/python3-comedilib
+	mkdir -p \
+		$(CURDIR)/debian/python3-comedilib/usr/bin
 	cp -R   $(CURDIR)/python/comedi \
 		$(CURDIR)/debian/python3-comedilib/usr/lib/python3/dist-packages/
 	cp -R   $(CURDIR)/python/examples \
 		$(CURDIR)/debian/python3-comedilib/usr/share/doc/python3-comedilib/
+	install -m 0755 \
+		$(CURDIR)/python/comedi_routes.py \
+		$(CURDIR)/debian/python3-comedilib/usr/bin/comedi_routes
 
 $(CURDIR)/debian/libcomedi0.install :
 	@echo "$${LIBCOMEDI0_INSTALL}" > $(CURDIR)/debian/libcomedi0.install
