@@ -18,11 +18,12 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 # main packaging script based on dh7 syntax
 %:
-	dh $@ --with autoreconf,python3
+	dh $@ --with autoreconf,python2,python3
 
 build binary :  $(CURDIR)/debian/changelog \
 		$(CURDIR)/debian/libcomedi0.install \
-		$(CURDIR)/debian/libcomedi-dev.install
+		$(CURDIR)/debian/libcomedi-dev.install \
+		$(CURDIR)/debian/python2.7-comedilib-swig.install
 
 define LIBCOMEDI0_INSTALL
 usr/lib/${DEB_HOST_MULTIARCH}/libcomedi.so.*
@@ -51,6 +52,12 @@ usr/lib/${DEB_HOST_MULTIARCH}/pkgconfig/comedilib.pc
 endef
 export LIBCOMEDI_DEV_INSTALL
 
+define PYTHON_COMEDILIB_SWIG_INSTALL
+usr/lib/python*/dist-packages/*.so
+usr/lib/python*/dist-packages/comedi.py
+endef
+export PYTHON_COMEDILIB_SWIG_INSTALL
+
 override_dh_autoreconf:
 	./autogen.sh
 
@@ -75,24 +82,29 @@ override_dh_compress:
 	dh_compress -X.c -X.py
 
 install_py_files:
+	for V in 3 2.7 ; do \
 	mkdir -p \
-		$(CURDIR)/debian/python3-comedilib/usr/lib/python3/dist-packages
+		$(CURDIR)/debian/python$${V}-comedilib-ctypes/usr/lib/python$${V}/dist-packages; \
 	mkdir -p \
-		$(CURDIR)/debian/python3-comedilib/usr/share/doc/python3-comedilib
+		$(CURDIR)/debian/python$${V}-comedilib-ctypes/usr/share/doc/python$${V}-comedilib-ctypes; \
 	mkdir -p \
-		$(CURDIR)/debian/python3-comedilib/usr/bin
+		$(CURDIR)/debian/python$${V}-comedilib-ctypes/usr/bin; \
 	cp -R   $(CURDIR)/python/comedi \
-		$(CURDIR)/debian/python3-comedilib/usr/lib/python3/dist-packages/
+		$(CURDIR)/debian/python$${V}-comedilib-ctypes/usr/lib/python$${V}/dist-packages/; \
 	cp -R   $(CURDIR)/python/examples \
-		$(CURDIR)/debian/python3-comedilib/usr/share/doc/python3-comedilib/
+		$(CURDIR)/debian/python$${V}-comedilib-ctypes/usr/share/doc/python$${V}-comedilib-ctypes/; \
 	install -m 0755 \
 		$(CURDIR)/python/comedi_routes.py \
-		$(CURDIR)/debian/python3-comedilib/usr/bin/comedi_routes
+		$(CURDIR)/debian/python$${V}-comedilib-ctypes/usr/bin/comedi_routes; \
+	done;
 
 $(CURDIR)/debian/libcomedi0.install :
 	@echo "$${LIBCOMEDI0_INSTALL}" > $(CURDIR)/debian/libcomedi0.install
 $(CURDIR)/debian/libcomedi-dev.install :
 	@echo "$${LIBCOMEDI_DEV_INSTALL}" > $(CURDIR)/debian/libcomedi-dev.install
+$(CURDIR)/debian/python2.7-comedilib-swig.install :
+	@echo "$${PYTHON_COMEDILIB_SWIG_INSTALL}" \
+		> $(CURDIR)/debian/python2.7-comedilib-swig.install
 
 $(CURDIR)/debian/changelog : $(CURDIR)/debian/mk_changelog
 	$(CURDIR)/debian/mk_changelog > $(CURDIR)/debian/changelog

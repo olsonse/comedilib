@@ -11,7 +11,12 @@ libcomedi-dev/
 libcomedi0/
 libcomedi0.install
 libcomedi-dev.install
+python2.7-comedilib-swig.install
 autoreconf.*
 tmp/
 .debhelper/
+python3-comedilib-ctypes/
+python2.7-comedilib-ctypes/
+python2.7-comedilib-swig/
 python3-comedilib/
+python-comedilib/
