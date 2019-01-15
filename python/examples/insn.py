@@ -29,6 +29,10 @@ arefs = dict(
   other   = comedi.AREF_OTHER,
 )
 
+def get_subdev_status(dev, subdev):
+  flags = comedi.get_subdevice_flags(dev,subdev)
+  return comedi.extensions.subdev_flags.to_dict(flags)
+
 
 def setup_gtod_insn(insn):
   insn.insn = comedi.INSN_GTOD
@@ -53,7 +57,7 @@ def setup_read_insn(dev, subdev, chan, range, aref, n_scan, insn):
   aref = arefs[aref]
   insn.insn = comedi.INSN_READ
   insn.n = n_scan
-  insn.data = (c_uint32 * n_scan)()
+  insn.data = (c_uint32 * n_scan)() # always 32bit in insn regardless of sampl_t
   insn.subdev = subdev
   insn.chanspec = comedi.CR_PACK(chan, range, aref)
 
@@ -65,6 +69,11 @@ def run(args):
 
   if args.ai_subdev < 0:
     args.ai_subdev = comedi.find_subdevice_by_type(dev, comedi.SUBD_AI, 0)
+
+  # get comedi.to_phys piceces to convert from raw data to physical voltages
+  status = get_subdev_status(dev, args.ai_subdev)
+  rng = comedi.get_range(dev, args.ai_subdev, args.ai_chan, args.ai_range)
+  maxdata = (1<<16 if status.sample_16bit else 1<<32) - 1
 
   # prepare the instructions
   insns = comedi.insnlist()
@@ -79,23 +88,26 @@ def run(args):
   if ret != insns.n_insns:
     raise RuntimeError('error running instructions ({})'.format(ret))
 
+  t1 = get_time(insns[0])
+  t2 = get_time(insns[2])
+  print('initial time: {} s'.format(t1))
+  print('final time:   {} s'.format(t2))
+  print('difference:   {} s'.format(t2-t1))
+
+  to_out = lambda data : comedi.to_phys(data, rng, maxdata)
+  if args.raw:
+    to_out = lambda data : data
+
+  print('data (in Volts):')
+  for i in range(insns[1].n):
+    print('\t', to_out(insns[1].data[i]))
+
   # we don't need the device anymore
+  # we close this last so we don't invalidate rng contents
   ret = comedi.close(dev)
   if ret != 0:
     raise RuntimeError('error closing Comedi device {} ({})'
                        .format(args.filename, ret))
-
-  t1 = get_time(insns[0])
-  t2 = get_time(insns[2])
-  print('initial time: {}'.format(t1))
-  print('final time:   {}'.format(t2))
-  print('difference:   {}'.format(t2-t1))
-
-  # we could actually convert these numbers to something meaningful using
-  # comedi_to_phys, but we are just trying to demonstrate something very simple
-  print('data:')
-  for i in range(insns[1].n):
-    print(insns[1].data[i])
 
 
 def process_args(arglist):

@@ -47,7 +47,7 @@ def get_subdev_status(dev, subdev):
 
 def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
          aref='ground', clock='timer', clock_rate=1000., settling_time_ns=10000,
-         n_samples = 1000, output='output.txt'):
+         n_samples = 1000, output='output.txt', raw=False):
   outf = open(output, 'w')
 
   dev = comedi.open(device)
@@ -113,6 +113,13 @@ def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
   shape = (n_samples,) # mapping to simple 1-D array
   data = np.ndarray(shape=shape, dtype=sampl_t, buffer=mapped, order='C')
 
+  if raw:
+    to_phys = lambda data : data
+  else:
+    # things to convert data (instead of using comedi.to_phys)
+    rng = comedi.get_range(dev, cmd.subdev, channel, 0)
+    ifdata_scale = (rng.contents.max - rng.contents.min) / (2**(8*sizeof(sampl_t)) - 1)
+    to_phys = lambda data : data * ifdata_scale + rng.contents.min
 
 
   # initiate command
@@ -134,10 +141,10 @@ def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
       I, F = int(begin / ssize), int(end / ssize)
       i, f = int(begin % ssize), int(end % ssize)
       if I < F:
-        np.savetxt(outf, data[i:ssize])
+        np.savetxt(outf, to_phys(data[i:ssize]))
         i = 0
       if i < f:
-        np.savetxt(outf, data[i:f])
+        np.savetxt(outf, to_phys(data[i:f]))
 
       ret = comedi.mark_buffer_read(dev, subdevice,
                                     (end - begin) * sizeof(sampl_t))
@@ -193,6 +200,8 @@ def process_args(arglist):
     help='Number of samples to collect [Default 1000]')
   parser.add_argument('-o', '--output', default='output.txt',
     help='Path to output file [Default output.txt]')
+  parser.add_argument(
+    '--raw', action='store_true', help='Give output in raw integer values')
 
   return parser.parse_args(arglist)
 
