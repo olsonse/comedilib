@@ -92,7 +92,7 @@ Description: Python wrapper for Comedilib
  Comedilib is a library for using Comedi, a driver interface for data
  acquisition hardware.  See the libcomedi0 package for more information.
  .
- This virutal package depends on the currently official python bindings for
+ This virtual package depends on the currently official python bindings for
  comedilib for Python2.
 
 Package: python3-comedilib
@@ -104,5 +104,5 @@ Description: Python wrapper for Comedilib
  Comedilib is a library for using Comedi, a driver interface for data
  acquisition hardware.  See the libcomedi0 package for more information.
  .
- This virutal package depends on the currently official python bindings for
+ This virtual package depends on the currently official python bindings for
  comedilib for Python3.
