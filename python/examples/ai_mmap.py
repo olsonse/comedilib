@@ -128,7 +128,7 @@ def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
   try:
     end = begin = 0
     ssize = size / sizeof(sampl_t)
-    while get_subdev_status(dev, cmd.subdev).running:
+    while get_subdev_status(dev, cmd.subdev).busy:
       end += int(comedi.get_buffer_contents(dev,subdevice) / sizeof(sampl_t))
 
       I, F = int(begin / ssize), int(end / ssize)
