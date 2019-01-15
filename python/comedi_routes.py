@@ -71,11 +71,11 @@ def main():
     help='List all named routes for given device')
   parser.add_argument('-N', '--show-numeric', action='store_true',
     help='Show numeric values of sources and destinations')
-  parser.add_argument('-t', '--test', nargs='*',
+  parser.add_argument('-t', '--test', nargs='*', metavar='SRC-DEST',
     help='Specify a series of space-separated routes to test as: src-dest')
-  parser.add_argument('-C', '--connect', nargs='*',
+  parser.add_argument('-C', '--connect', nargs='*', metavar='SRC-DEST',
     help='Specify a series of space-separated routes to connect as: src-dest')
-  parser.add_argument('-D', '--disconnect', nargs='*',
+  parser.add_argument('-D', '--disconnect', nargs='*', metavar='SRC-DEST',
     help='Specify a series of space-separated routes to disconnect as: src-dest')
 
   args = parser.parse_args()
