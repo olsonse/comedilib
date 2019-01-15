@@ -461,25 +461,25 @@ dds_list = [
 def process_args(arglist):
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument( '-f', '--filename', nargs='?', default='/dev/comedi0',
-    help='Comedi device file [Default: /dev/comedi0]' )
+    help='Comedi device file [Default /dev/comedi0]' )
   parser.add_argument( '-s', '--subdevice', type=int, default=-1,
-    help='Select analog output subdevice [Default:  <first AO>]' )
+    help='Select analog output subdevice [Default  <first AO>]' )
   parser.add_argument( '-c', '--channels', nargs='+', type=int, default=[0],
-    help='Select output channels [Default: [0]]' )
+    help='Select output channels [Default [0]]' )
   parser.add_argument( '-a', '--aref',  choices=['ground', 'common'],
     default='ground',
-    help='Select analog reference [Default: ground]' )
+    help='Select analog reference [Default ground]' )
   parser.add_argument( '-r', '--range', type=int, default=0,
     help='Select analog output range number [Default 0]' )
   parser.add_argument( '-N', '--n_samples', type=int, default=0,
     help='Specify number of output samples per channel [Default 0(all-memory)]' )
   parser.add_argument( '-W', '--waveform_freq', type=float, default=10.0,
-    help='set waveform frequency in Hz [default 10.0]' )
+    help='set waveform frequency in Hz [Default 10.0]' )
   parser.add_argument( '-F', '--freq', type=float, default=1000.,
-    help='set update frequency in Hz [default 1000.]' )
+    help='set update frequency in Hz [Default 1000.]' )
   parser.add_argument( '-U', '--update_source',
     default='timer',
-    help='Select update signal source [Default: timer].  '
+    help='Select update signal source [Default timer].  '
          'By specifying the word `timer`, the internal scan clock is used.  '
          'These can be any item that is reasonable (better know your hardware) '
          'and resolvable using the comedi module namespace.  For example, '
@@ -487,15 +487,26 @@ def process_args(arglist):
          'also specify a raw integer value if desired.')
   parser.add_argument( '-w', '--waveform', type=int, default=0,
     help='[Default 0]' + '\n\t'.join([ '{}: {}'.format(i,c.name)
-           for i,c in zip(xrange(len(dds_list)), dds_list)]) )
+           for i,c in zip(range(len(dds_list)), dds_list)]) )
   parser.add_argument( '-C', '--continuous', action='store_true',
     help='Select continuous operation')
   parser.add_argument( '-v', '--verbose', action='store_true' )
-  parser.add_argument( '--oswrite', action='store_true' )
-  parser.add_argument( '--write_more', action='store_true' )
+  parser.add_argument( '--oswrite', action='store_true',
+    help='Use os.write instead of writing to mmap\'d memory.' )
+  parser.add_argument( '--write_more', action='store_true',
+    help='Write additional data after waveform is started.  This was probably '
+         'meant mostly for debugging a driver and may not work for os.write '
+         'or otherwise do what one thinks it might' )
   parser.add_argument( '-L', '--waveform_len', type=int, default=1<<16,
-    help='Select the number of samples in the waveform to repeat' )
-  parser.add_argument( '-S', '--show-waveform', action='store_true' )
+    help='Define the length of the DDS waveform to be defined contiguously.  '
+         'This only serves to help define the DDS waveform, but does not '
+         'necessarily define any duration of the output.  For example, if '
+         'waveform_len is set to 10 and the DDS type is a sine-wave, only 10 '
+         'points will be used to define the sine-wave, regardless of how many '
+         'times this coursely-sampled sine-wave is actually written to output. '
+         '[Default {}]'.format(1<<16) )
+  parser.add_argument( '-S', '--show-waveform', action='store_true',
+    help='Show a plot of the waveform before it is executed' )
   return parser.parse_args(arglist)
 
 def main(arglist):

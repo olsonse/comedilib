@@ -166,7 +166,7 @@ if __name__ == '__main__':
 
   parser = argparse.ArgumentParser()
   parser.add_argument('--devfile', type=str, default='/dev/comedi0',
-    help='Select the comedi device file [Default: /dev/comedi0]')
+    help='Select the comedi device file [Default /dev/comedi0]')
   O = parser.parse_args()
   try:
     main(O.devfile)

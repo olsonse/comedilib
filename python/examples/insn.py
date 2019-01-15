@@ -110,22 +110,25 @@ def process_args(arglist):
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
     '-f', '--filename', default='/dev/comedi0',
-    help='path to comedi device file')
+    help='path to comedi device file [Default /dev/comedi0]')
   parser.add_argument(
     '-s', '--subdevice', type=int, default=-1, dest='ai_subdev',
-    help='subdevice for analog input [Default=-1].  If <0, find ai subdevice')
+    help='subdevice for analog input [Default -1].  If <0, find ai subdevice')
   parser.add_argument(
     '-c', '--channel', type=int, default=0, dest='ai_chan',
-    help='channel for analog input')
+    help='channel for analog input [Default 0]')
   parser.add_argument(
     '-a', '--analog-reference', default='ground', dest='ai_ref',
-    choices=arefs.viewkeys(), help='reference for analog input')
+    choices=arefs.keys(), help='reference for analog input [Default ground]')
   parser.add_argument(
     '-r', '--range', type=int, default=0, dest='ai_range',
-    help='range for analog input')
+    help='range index for analog input (use info.py to find all ranges) '
+         '[Default 0]')
   parser.add_argument(
     '-N', '--num-scans', type=check_nscans, default=10, dest='ai_scans',
-    help='number of analog input scans (select 1..1000)')
+    help='number of analog input scans (select 1..1000) [Default 10]')
+  parser.add_argument(
+    '--raw', action='store_true', help='Give output in raw integer values')
 
   return parser.parse_args(arglist)
 

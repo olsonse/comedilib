@@ -160,30 +160,39 @@ def process_args(arglist):
 
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
-    '-f', '--device', default='/dev/comedi0', help='path to comedi device file')
+    '-f', '--device', default='/dev/comedi0',
+    help='path to comedi device file [Default /dev/comedi0]')
   parser.add_argument(
     '-s', '--subdevice', type=int, default=-1,
-    help='subdevice for analog input [Default=-1].  If <0, find ai subdevice')
+    help='subdevice for analog input [Default -1].  If <0, find ai subdevice')
   parser.add_argument(
     '-c', '--channel', type=int, default=0,
-    help='channel for analog input')
+    help='channel for analog input [Default 0]')
   parser.add_argument('--aref', choices=arefs, default='ground',
-    help='reference for analog input')
+    help='reference for analog input [Default ground]')
   parser.add_argument('--trigger', type=str, default=None,
     help='Select trigger [Default: None].  '
          'These can be any item that is reasonable (better know your hardware) '
          'and resolvable using the comedi module namespace.  For example, '
          'NI_PFI(0), TRIGGER_LINE(1), ... are valid for NI devices.')
-  parser.add_argument('--clock', type=str, default='timer', help='[Default timer]')
-  parser.add_argument('--clock_rate', type=float, default=1000., help='[1000.]')
+  parser.add_argument('--clock', type=str, default='timer',
+    help='The sample clock source.  Valid values for this option include: '
+         '(a) `timer` to indicate that the internal timing circuitry should be '
+         'used, (b) any symbolic name for a signal as defined in comedi '
+         'library (such as `NI_PFI(1)` or `TRIGGER_LINE(2)`) that evaluates to '
+         'a valid clock input, or (c) any numeric value representing a valid '
+         'clock input for the particular device. [Default timer]')
+  parser.add_argument('--clock_rate', type=float, default=1000.,
+    help='Rate of sample clock timer in Hz (if timer is used) [Default 1000]')
   parser.add_argument('--settling_time_ns', type=int, default=10000,
     help='Specify the settling time for each conversion in ns [Default 10000].  '
          'Note that the minimum time used for allowing the ADC to settle is '
          'limited by the actual hardware.  In other words, if you select an '
          'invalid value, a runtime exception will be thrown.')
-  parser.add_argument('-N', '--n_samples', type=int, default=1000, help='[1000]')
+  parser.add_argument('-N', '--n_samples', type=int, default=1000,
+    help='Number of samples to collect [Default 1000]')
   parser.add_argument('-o', '--output', default='output.txt',
-    help='path to output file')
+    help='Path to output file [Default output.txt]')
 
   return parser.parse_args(arglist)
 

@@ -142,16 +142,26 @@ def generate_data(samples_per_channel, num_channels, sampl_t, mx=4*np.pi):
 def process_args(arglist):
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument( '-f', '--filename', nargs='?', default='/dev/comedi0',
-    help='Comedi device file [Default: /dev/comedi0]' )
+    help='Comedi device file [Default /dev/comedi0]' )
   parser.add_argument('--trigger', type=str, default=None,
-    help='Select trigger [Default: None].  '
+    help='Select trigger [Default None].  '
          'These can be any item that is reasonable (better know your hardware) '
          'and resolvable using the comedi module namespace.  For example, '
          'NI_PFI(0), TRIGGER_LINE(1), ... are valid for NI devices.')
-  parser.add_argument('--clock', type=str, default='timer', help='[timer]')
-  parser.add_argument('--clock_rate', type=float, default=1000., help='[1000.]')
-  parser.add_argument('--continuous', action='store_true', help='[False]')
-  parser.add_argument('--waveform_len', type=int, default=1000, help='[1000]')
+  parser.add_argument('--clock', type=str, default='timer',
+    help='The sample clock source.  Valid values for this option include: '
+         '(a) `timer` to indicate that the internal timing circuitry should be '
+         'used, (b) any symbolic name for a signal as defined in comedi '
+         'library (such as `NI_PFI(1)` or `TRIGGER_LINE(2)`) that evaluates to '
+         'a valid clock input, or (c) any numeric value representing a valid '
+         'clock input for the particular device. [Default timer]')
+  parser.add_argument('--clock_rate', type=float, default=1000.,
+    help='Rate of sample clock timer in Hz (if timer is used) [Default 1000]')
+  parser.add_argument('--continuous', action='store_true', help='[False]',
+    help='Select continuous operation')
+  parser.add_argument('--waveform_len', type=int, default=1000,
+    help='Specify the number of samples of the sinusoid for the output '
+         '[Default 1000]')
 
   return parser.parse_args(arglist)
 
