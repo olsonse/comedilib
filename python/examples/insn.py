@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (C) Mar 2012  W. Trevor King <wking@drexel.edu>
 # Public Domain contributions Spencer E. Olson <olsonse@umich.edu>
@@ -148,7 +148,7 @@ def main(arglist):
   args = process_args(arglist)
   try:
     run(args)
-  except RuntimeError, e:
+  except RuntimeError as e:
     print('error: {}'.format(e))
 
 if __name__ == '__main__':

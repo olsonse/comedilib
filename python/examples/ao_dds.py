@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Asynchronous Analog Output Example
@@ -42,7 +42,7 @@ import comedi
 import numpy as np
 from ctypes import c_uint, c_ubyte, sizeof
 from mmap import mmap, PROT_WRITE, MAP_SHARED
-from itertools import izip
+
 
 import argparse
 
@@ -69,7 +69,7 @@ class Test(object):
     #/* Use extra to select waveform */
     fn = options.waveform
     if fn < 0 or fn >= len( dds_list ):
-      print "Use the option '-w' to select another waveform."
+      print("Use the option '-w' to select another waveform.")
       fn = 0
     dds_klass = dds_list[fn]
 
@@ -131,14 +131,14 @@ class Test(object):
     self.cmd.chanlist_len = len(options.channels)
 
     aref = arefs[ options.aref ]
-    for i,c in izip( xrange(len(options.channels)), options.channels ):
+    for i,c in zip( range(len(options.channels)), options.channels ):
       self.chanlist[i] = comedi.CR_PACK(c, options.range, aref)
   
     self.dds = dds_klass(
       self.amplitude, self.offset, options.waveform_freq, options.freq, options.waveform_len )
 
     if options.verbose:
-      print 'cmd: ', self.cmd
+      print('cmd: ', self.cmd)
 
     err = comedi.command_test(self.dev, self.cmd)
     if err < 0:
@@ -155,7 +155,7 @@ class Test(object):
 
     size = comedi.get_buffer_size( self.dev, options.subdevice )
     if options.verbose:
-      print "buffer size is:", size
+      print("buffer size is:", size)
 
     # the following two integer projections are really unecessary, at least for
     # python 2.7, but are still written for clarity.  Probably necessar for
@@ -172,7 +172,7 @@ class Test(object):
 
     shape = ( self.samples_per_channel, len(options.channels) )
     if self.options.verbose:
-      print 'shape: ', shape
+      print('shape: ', shape)
 
     #print 'BUF_LEN, samples_per_channel, n_chan, shape: ', \
     #  self.BUF_LEN, self.samples_per_channel, len(options.channels), shape
@@ -184,7 +184,7 @@ class Test(object):
         buf = ( c_ubyte * n ).from_buffer( data )
         m = os.write( comedi.fileno(self.dev), buf )
         if self.options.verbose:
-          print "wrote {} out of {}".format(m, n)
+          print("wrote {} out of {}".format(m, n))
         if m < 0:
           raise OSError('os write error')
         return m
@@ -204,7 +204,7 @@ class Test(object):
       def write_data( data, n ):
         m = comedi.mark_buffer_written(self.dev, options.subdevice, n)
         if self.options.verbose:
-          print "Marked {} out of {}".format(m, n)
+          print("Marked {} out of {}".format(m, n))
         if m < 0:
           comedi.perror("comedi.mark_buffer_written")
           raise OSError('mark_buffer error')
@@ -216,7 +216,7 @@ class Test(object):
   def close(self):
     if hasattr( self, 'dev' ):
       if self.options.verbose:
-        print 'closing comedi driver...'
+        print('closing comedi driver...')
       del self.data
       if not self.options.oswrite:
         self.mapped.close()
@@ -241,7 +241,7 @@ class Test(object):
       raise OSError('comedi.internal_trigger error: ')
 
   def _dds(self):
-    for i in xrange( len(self.options.channels) ):
+    for i in range( len(self.options.channels) ):
       self.dds(self.data[:,i], self.samples_per_channel)
 
   def start(self):
@@ -249,7 +249,7 @@ class Test(object):
     Start the waveform
     """
     if self.options.verbose:
-      print 'cmd: ', self.cmd
+      print('cmd: ', self.cmd)
     err = comedi.command(self.dev, self.cmd)
     if err < 0:
       comedi.perror("comedi.command");
@@ -258,19 +258,19 @@ class Test(object):
     self._dds()
     if self.options.show_waveform:
       import pylab
-      for i in xrange( len(self.options.channels) ):
+      for i in range( len(self.options.channels) ):
         pylab.plot( self.data[:,i] )
       pylab.show()
 
     n = self.output_size
     m = self.write_data( self.data, n )
     if m < n:
-      print "failed to preload output buffer with", n, "bytes, is it too small?"
-      print "See the --write-buffer option of comedi_config"
+      print("failed to preload output buffer with", n, "bytes, is it too small?")
+      print("See the --write-buffer option of comedi_config")
       raise OSError('--write-buffer ?')
 
     if self.options.verbose:
-      print "m=",m
+      print("m=",m)
 
     self.trigger()
 
@@ -299,7 +299,7 @@ class Test(object):
             next_chunk = self.data[(N-n):]
             m=self.write_data(next_chunk,n)
             if self.options.verbose:
-              print "m=",m
+              print("m=",m)
             n-=m
           total+=self.samples_per_channel
           #print 'total: ', total
@@ -320,8 +320,8 @@ class Test(object):
     if self.options.verbose:
       self.subdevice_flags = \
         comedi.get_subdevice_flags(self.dev, self.options.subdevice)
-      print 'before cancel flags:'
-      print comedi.extensions.subdev_flags.to_dict( self.subdevice_flags )
+      print('before cancel flags:')
+      print(comedi.extensions.subdev_flags.to_dict( self.subdevice_flags ))
 
     # now cleanup
     comedi.cancel( self.dev, self.options.subdevice )
@@ -329,8 +329,8 @@ class Test(object):
     if self.options.verbose:
       self.subdevice_flags = \
         comedi.get_subdevice_flags(self.dev, self.options.subdevice)
-      print 'after cancel flags:'
-      print comedi.extensions.subdev_flags.to_dict( self.subdevice_flags )
+      print('after cancel flags:')
+      print(comedi.extensions.subdev_flags.to_dict( self.subdevice_flags ))
 
 
 
@@ -351,7 +351,7 @@ class DDS(object):
 
   def __call__(self, buf, n):
     WAVEFORM_MASK   = (self.WAVEFORM_LEN-1)
-    for i in xrange( n ):
+    for i in range( n ):
       buf[i] = int( self.waveform[(self.acc >> 16) & WAVEFORM_MASK] )
       self.acc += self.adder;
 
@@ -383,10 +383,10 @@ class DDS_pseudocycloid(DDS):
   """
   name = 'pseudocycloid'
   def init(self):
-    for i in xrange( self.WAVEFORM_LEN/2 ):
+    for i in range( self.WAVEFORM_LEN/2 ):
       t=2*float(i)/self.WAVEFORM_LEN
       self.waveform[i]=round(self.offset+self.amplitude*np.sqrt(1-4*t*t))
-    for i in xrange( self.WAVEFORM_LEN/2, self.WAVEFORM_LEN ):
+    for i in range( self.WAVEFORM_LEN/2, self.WAVEFORM_LEN ):
       t=2*(1-float(i)/self.WAVEFORM_LEN)
       self.waveform[i]=round(self.offset+self.amplitude*np.sqrt(1-t*t))
 
@@ -396,7 +396,7 @@ class DDS_cycloid(DDS):
     SUBSCALE = 2 # Needs to be >= 2.
 
     i = -1;
-    for h in xrange( self.WAVEFORM_LEN* SUBSCALE ):
+    for h in range( self.WAVEFORM_LEN* SUBSCALE ):
       t = (h * (2 * np.pi)) / (self.WAVEFORM_LEN * SUBSCALE)
       x = t - np.sin(t)
       ni = int((x * self.WAVEFORM_LEN) / (2 * np.pi))
@@ -414,29 +414,29 @@ class DDS_ramp_up(DDS):
 class DDS_ramp_down(DDS):
   name = 'ramp_down'
   def init(self):
-    for i in xrange( self.WAVEFORM_LEN ):
+    for i in range( self.WAVEFORM_LEN ):
       self.waveform[i]=round(self.offset+self.amplitude*float(self.WAVEFORM_LEN-1-i)/self.WAVEFORM_LEN)
 
 class DDS_triangle(DDS):
   name = 'triangle'
   def init(self):
-    for i in xrange( self.WAVEFORM_LEN ):
+    for i in range( self.WAVEFORM_LEN ):
       self.waveform[i] = round(self.offset + self.amplitude * 2 * triangle(float(i) / self.WAVEFORM_LEN))
 
 class DDS_square(DDS):
   name = 'square'
   def init(self):
-    for i in xrange( self.WAVEFORM_LEN/2 ):
+    for i in range( self.WAVEFORM_LEN/2 ):
       self.waveform[i] = round(self.offset)
-    for i in xrange( self.WAVEFORM_LEN/2, self.WAVEFORM_LEN ):
+    for i in range( self.WAVEFORM_LEN/2, self.WAVEFORM_LEN ):
       self.waveform[i] = round(self.offset + self.amplitude)
 
 class DDS_blancmange(DDS):
   name = 'blancmange'
   def init(self):
-    for i in xrange( self.WAVEFORM_LEN ):
+    for i in range( self.WAVEFORM_LEN ):
       b = 0;
-      for n in xrange( 16 ):
+      for n in range( 16 ):
         x = float(i) / self.WAVEFORM_LEN
         x *= (1 << n)
         x -= int(x)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Asynchronous Analog Input Example
@@ -48,7 +48,7 @@ def get_subdev_status(dev, subdev):
 def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
          aref='ground', clock='timer', clock_rate=1000., settling_time_ns=10000,
          n_samples = 1000, output='output.txt', raw=False):
-  outf = open(output, 'w')
+  outf = open(output, 'wb')
 
   dev = comedi.open(device)
 
@@ -129,7 +129,7 @@ def run(device='/dev/comedi0', subdevice=-1, channel=0, trigger=None,
                        .format(comedi.strerror(comedi.errno())))
 
   if cmd.start_src != comedi.TRIG_NOW:
-    print 'ready for external trigger...'
+    print('ready for external trigger...')
 
   # record data until the end...
   try:
@@ -215,7 +215,7 @@ def main(arglist):
     if O.clock != 'timer':
       O.clock = eval(O.clock, globals(), comedi.__dict__)
   except NameError as n:
-    print 'Name Error: ', n
+    print('Name Error: ', n)
 
   run(**O.__dict__)
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Asynchronous Analog Output Example
@@ -116,7 +116,7 @@ def run(device='/dev/comedi0', trigger=None, clock='timer',
       comedi.perror('comedi.internal_trigger error')
       raise OSError('comedi.internal_trigger error: ')
   else:
-    print 'ready for external trigger...'
+    print('ready for external trigger...')
 
   # wait for end
   try:
@@ -134,7 +134,7 @@ def generate_data(samples_per_channel, num_channels, sampl_t, mx=4*np.pi):
   shape = ( samples_per_channel, num_channels )
   data = np.zeros( shape, dtype=sampl_t )
   t = np.r_[0:mx:1j*samples_per_channel]
-  for i in xrange(num_channels):
+  for i in range(num_channels):
     data[:,i] = np.sin(t + .1 * i)
   return data
 
@@ -175,7 +175,7 @@ def main(arglist):
     if O.clock != 'timer':
       O.clock = eval(O.clock, globals(), comedi.__dict__)
   except NameError as n:
-    print 'Name Error: ', n
+    print('Name Error: ', n)
 
   run(O.filename, O.trigger, O.clock, O.clock_rate, O.continuous,
       O.waveform_len)
